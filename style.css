@@ -509,8 +509,15 @@ justify-items: center;
   margin-top: auto;         /* pushes the button to the bottom */
   align-self: center;  
   max-height: 50px; 
+      font-family: 'Helvetica Neue', sans-serif !important;
+  font-weight:500;
+  font-size: 1rem;
+  color: #323233;
 }
 
+#new-place-btn text-link {
+  color: #323233;
+}
 #start-over-btn {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;

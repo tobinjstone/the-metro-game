@@ -459,7 +459,7 @@ function animateMysteryTrip(line, startStation, trip) {
     /* ── 3. prep the ticket strip (dot + arrow + terminal) --------------- */
 const dotHTML = `<span class="line-dot ${line.name==="Silver"?"silver":""}"
                   style="background:${line.color}"></span>`;
-lineBox.innerHTML = `${dotHTML}<span class="arrow">⮕</span> ${trip.terminal}`;
+lineBox.innerHTML = `${dotHTML}<span class="arrow">⮕  </span> ${trip.terminal}`;
 
     /* collapse the paper so nothing shows yet */
     paperWrap.classList.remove("hidden");
