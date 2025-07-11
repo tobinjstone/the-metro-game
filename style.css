@@ -1,4 +1,4 @@
-﻿/* --- base layout --- */
+﻿/* base layout */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -29,7 +29,7 @@ body {
 #start-btn:hover,
 #back-btn:hover { filter: brightness(1.1); }
 
-/* --- line picker --- */
+/* line picker */
 #line-picker {
   display: flex;
   flex-wrap: wrap;
@@ -38,26 +38,31 @@ body {
   margin-top: 1rem;
 }
 .line-circle {
-  width: 64px;
-  height: 64px;
+  width: 64px; height: 64px;
   border-radius: 50%;
   border: 3px solid #fff;
   cursor: pointer;
 }
 
-/* --- station picker --- */
+/* station picker */
 #station-picker {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.5rem;
+  gap: .5rem;
   margin: 1.5rem 0;
+
+  /* NEW ➜ keep it on-screen */
+  max-height: 60vh;      /* 60% of the viewport height */
+  overflow-y: auto;      /* vertical scroll if it overflows */
+  padding-right: .25rem; /* tiny room so scrollbar doesn’t cover text */
 }
+
 .station-btn {
-  padding: 0.5rem;
+  padding: .5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   background: #f9f9f9;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 .station-btn:hover { background: #ececec; }

@@ -5,23 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DC Metro Roulette</title>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Intro screen -->
   <main id="intro">
     <img id="logo"
-         src="images\themetrogame.svg"
+         src="images/themetrogame.svg"
          alt="DC Metro Roulette logo" />
     <button id="start-btn">Start Game</button>
   </main>
 
-  <!-- Game container (hidden until Start) -->
+  <!-- Game container -->
   <section id="game-area" hidden></section>
 
-  <!-- Scripts (data first, then main logic) -->
-  <script src="metro-lines.js"></script>
-  <script src="script.js" defer></script>
+  <!-- Data first, then logic -->
+<script type="module" src="script.js"></script>
 </body>
 </html>
