@@ -1,6 +1,25 @@
 // ------------------------------ imports ----------------------------------
 import { metroLines } from "./metro-lines.js";
-import { venues }     from "./venues.js";
+
+
+
+/* ---------- add near the top of script.js ---------- */
+let places = {};                  // will hold the big dataset
+
+async function loadPlaces() {
+  const resp  = await fetch('places-dataset-clean.json');
+  places      = await resp.json();   // { 'Metro Center': [ … ] , … }
+}
+
+/* bootstrap */
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadPlaces();              // <- make sure it’s ready before any rolls
+  document.getElementById('start-btn').onclick = () => {
+    pinLogo();
+    renderLineSelection();
+    showScreen('line-screen');
+  };
+});
 
 /* ------------------------------ view helpers ----------------------------- */
 function showScreen(id) {
@@ -244,12 +263,28 @@ requestAnimationFrame(() => btnWrap.classList.add("fade-in")); // <— add this
 
 /* ------------------------------ VENUE reveal ----------------------------- */
 function handleArrival() {
-  const list  = venues[currentTrip.destStation] || [];
-  const venue = list.length
-      ? list[Math.floor(Math.random() * list.length)]
-      : { name: "…no curated spot yet 😅",
-          address: "",
-          note: "Explore & tell us what you find!" };
+  // ➊ grab your curated picks (if any)
+  const curated = venues[currentTrip.destStation] || [];
+
+  // ➋ grab ALL Google-Places results for this station
+  const nearby  = places[currentTrip.destStation] || [];
+
+  // ➌ optional: filter or score (examples below)
+  // const nearby = (places[currentTrip.destStation] || [])
+  //                  .filter(p => p.rating >= 4.0 && p.distance_m <= 250);
+
+  // ➍ mash them together so curated items surface slightly more often
+  const pickPool = [
+    ...curated,            // each appears once
+    ...nearby              // each appears once
+  ];
+
+  const venue = pickPool.length
+      ? pickPool[Math.floor(Math.random() * pickPool.length)]
+      : { name : '…no spot found 🤷‍♂️',
+          address : '',
+          note : 'Explore & tell us what you discover!' };
+
 
   const vs = document.getElementById("venue-screen");
   vs.querySelector("#venue-name").textContent    = venue.name;
