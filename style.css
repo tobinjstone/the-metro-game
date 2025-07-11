@@ -500,7 +500,7 @@ justify-items: center;
   border: 1.35px solid #323233;
   margin-top: auto;         /* pushes the button to the bottom */
   align-self: center;  
-  max-height: 30%; 
+  max-height: 50px; 
 }
 
 #start-over-btn {
