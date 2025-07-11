@@ -8,21 +8,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Intro screen -->
-  <main id="intro">
-    <img id="logo"
-         src="images/themetrogame.svg"
-         alt="DC Metro Roulette logo" />
+  <!-- INTRO ------------------------------------------------>
+  <section id="intro-screen" class="screen">
+    <img id="logo" src="images/themetrogame.svg" alt="DC Metro Roulette logo">
     <button id="start-btn">Start Game</button>
-  </main>
+  </section>
 
-  <!-- Game container -->
-  <section id="game-area" hidden></section>
+  <!-- LINE / HUB PICKER ----------------------------------->
+  <section id="line-screen" class="screen" hidden></section>
 
-  <!-- Data first, then logic -->
-<!-- Data module first, then main logic -->
-<script type="module" src="script.js"></script>
+  <!-- STATION PICKER -------------------------------------->
+  <section id="station-screen" class="screen" hidden></section>
 
+  <!-- MYSTERY TRIP ---------------------------------------->
+  <section id="trip-screen" class="screen" hidden></section>
 
+  <script type="module" src="metro-lines.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
+
 </html>

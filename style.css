@@ -85,3 +85,25 @@ body {
   cursor: pointer;
 }
 .hub-btn:hover { background: #f0f0f0; }
+
+
+/* ----- universal “page” containers ----- */
+.screen {
+  position: fixed;        /* sit on top of each other */
+  inset: 0;               /* full viewport */
+  display: grid; place-content: center;
+  background: #fafafa;    /* default bg, tweak per design */
+  transition: transform 600ms cubic-bezier(.42,0,.2,1); /* ease-in-out */
+  transform: translateY(0);          /* default: visible */
+  overflow-y: auto;                  /* so long lists scroll */
+}
+
+/* hidden = off the DOM but keeps layout from flashing */
+.screen[hidden] { display:none; }
+
+/* slide the old screen up & away */
+.screen.slide-out { transform: translateY(-100%); }
+
+/* slide the next screen up from bottom */
+.screen.slide-in  { transform: translateY(100%); }
+.screen.active    { transform: translateY(0); }

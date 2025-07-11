@@ -1,6 +1,27 @@
 // script.js  – ES-module entry point
 import { metroLines } from './metro-lines.js';
 
+function showScreen(id) {
+  // hide any currently active screen
+  document.querySelectorAll('.screen.active').forEach(el => {
+    el.classList.add('slide-out');
+    el.classList.remove('active');
+    // when the animation ends, actually hide it
+    el.addEventListener('transitionend', () => el.hidden = true, { once:true });
+  });
+
+  // reveal & slide in the requested screen
+  const target = document.getElementById(id);
+  target.hidden = false;                // make it part of flow
+  target.classList.add('slide-in');     // start below viewport
+
+  // allow one frame so the browser registers the start position
+  requestAnimationFrame(() => {
+    target.classList.remove('slide-in');
+    target.classList.add('active');     // animate into place
+  });
+}
+
 /* ----------------- global state ----------------- */
 let selectedLine = null;
 let currentTrip  = null;   // { line, startStation, numStops, terminal, destStation }
@@ -13,14 +34,14 @@ const hubLines = {
 };
 
 /* ============= bootstrap ============= */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('start-btn').onclick = startGame;
-});
+document.getElementById('start-btn').onclick = () => {
+  showScreen('line-screen');      // <— NEW
+  renderLineSelection();          // rebuild the circles + hub buttons
+};
+
 
 /* ============= start screen ============= */
 function startGame() {
-  document.getElementById('intro').hidden = true;
-  document.getElementById('game-area').hidden = false;
   renderLineSelection();
 }
 
@@ -51,10 +72,12 @@ function renderLineSelection() {
     linePicker.appendChild(btn);
   });
   linePicker.onclick = e => {
-    if (!e.target.classList.contains('line-circle')) return;
-    selectedLine = metroLines[Number(e.target.dataset.index)];
-    renderStationSelection();
-  };
+  if (!e.target.classList.contains('line-circle')) return;
+  selectedLine = metroLines[Number(e.target.dataset.index)];
+  renderStationSelection();          // keep this
+  showScreen('station-screen');      // <— ADD this
+};
+
 
   /* --- hub buttons --- */
   const hubPicker = document.getElementById('hub-picker');
@@ -67,8 +90,10 @@ function renderLineSelection() {
     const lineObj    = metroLines.find(l => l.name === chosenName);
 
     const startIndex = lineObj.stations.indexOf(hubName);
-    const trip       = getTrip(lineObj, startIndex);
-    showMysteryTrip(lineObj, hubName, trip);
+    const trip = getTrip(lineObj, startIndex);
+showMysteryTrip(lineObj, hubName, trip);
+showScreen('trip-screen');           // <— NEW
+
   };
 }
 
@@ -90,17 +115,23 @@ function renderStationSelection() {
     picker.appendChild(btn);
   });
 
-  picker.onclick = e => {
-    if (!e.target.classList.contains('station-btn')) return;
-    const startStation = e.target.textContent;
-    const startIndex   = selectedLine.stations.indexOf(startStation);
+picker.onclick = e => {
+  if (!e.target.classList.contains('station-btn')) return;
 
-    const trip = getTrip(selectedLine, startIndex);
-    showMysteryTrip(selectedLine, startStation, trip);
-  };
+  const startStation = e.target.textContent;
+  const startIndex   = selectedLine.stations.indexOf(startStation);
+  const trip         = getTrip(selectedLine, startIndex);
 
-  document.getElementById('back-btn').onclick = renderLineSelection;
-}
+  showMysteryTrip(selectedLine, startStation, trip);
+  showScreen('trip-screen');         // <— NEW
+};
+
+
+document.getElementById('back-btn').onclick = () => {
+  showScreen('line-screen');
+  renderLineSelection();
+};
+
 
 /* ============= trip logic helpers ============= */
 function getTrip(line, startIndex) {
@@ -141,14 +172,16 @@ function showMysteryTrip(line, startStation, trip) {
   `;
 
   document.getElementById('arrived-btn').onclick = handleArrival;
-  document.getElementById('play-again').onclick  = () => {
-    selectedLine = null;
-    currentTrip  = null;
-    renderLineSelection();
-  };
+document.getElementById('play-again').onclick = () => {
+  selectedLine = null;
+  currentTrip  = null;
+  renderLineSelection();
+  showScreen('line-screen');         // <— NEW
+};
+
 }
 
 function handleArrival() {
   // Placeholder: reveal destination
   alert(`Welcome to ${currentTrip.destStation}! (Attractions coming soon.)`);
-}
+}}
