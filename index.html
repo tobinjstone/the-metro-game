@@ -4,27 +4,61 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DC Metro Roulette</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <!-- INTRO ------------------------------------------------>
-  <section id="intro-screen" class="screen">
-    <img id="logo" src="images/themetrogame.svg" alt="DC Metro Roulette logo">
+  <!-- INTRO ------------------------------------------------------------>
+  <section id="intro-screen" class="screen active">
+    <img id="logo" src="images/themetrogame.svg" alt="DC Metro Roulette logo" />
     <button id="start-btn">Start Game</button>
   </section>
 
-  <!-- LINE / HUB PICKER ----------------------------------->
+  <!-- PICK LINE / HUB -------------------------------------------------->
   <section id="line-screen" class="screen" hidden></section>
 
-  <!-- STATION PICKER -------------------------------------->
+  <!-- PICK STATION ----------------------------------------------------->
   <section id="station-screen" class="screen" hidden></section>
 
-  <!-- MYSTERY TRIP ---------------------------------------->
-  <section id="trip-screen" class="screen" hidden></section>
+  <!-- MYSTERY TRIP ----------------------------------------------------->
+ <section id="trip-screen" class="screen" hidden>
+  <!-- Thinking animation -->
+  <div id="thinking-box" class="thinking hidden">
+    <img src="images/lightbulb.svg" alt="Thinking..." class="bulb" />
+    <span id="thinking-text">Thinking</span>
+  </div>
 
+  <!-- Animated Reveal Boxes -->
+  <div id="reveal-boxes">
+    <div id="line-box" class="reveal-box hidden">Red Line</div>
+    <div id="direction-box" class="reveal-box hidden">toward Glenmont</div>
+  </div>
+
+  <!-- Trip Result Card -->
+  <div id="result-card" class="trip-card hidden">
+    <div class="stops-box">
+      <span id="stop-number">4</span>
+    </div>
+    <div class="trip-details">
+      <div id="trip-line">Red Line</div>
+      <div id="trip-destination">Glenmont</div>
+      <div id="trip-subtext">4 stops</div>
+      <img src="images/map-icon.svg" alt="Mini map" class="mini-map" />
+    </div>
+    <div class="trip-extra">
+      <label><input type="checkbox" id="been-here"> Been here before?</label>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="trip-buttons hidden">
+    <button id="arrived-btn">I’ve arrived</button>
+    <button id="play-again">Roll Again</button>
+  </div>
+</section>
+
+  <!-- DATA then LOGIC (ES-modules) ------------------------------------->
   <script type="module" src="metro-lines.js"></script>
   <script type="module" src="script.js"></script>
 </body>
-
 </html>

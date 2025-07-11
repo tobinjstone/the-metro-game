@@ -107,3 +107,163 @@ body {
 /* slide the next screen up from bottom */
 .screen.slide-in  { transform: translateY(100%); }
 .screen.active    { transform: translateY(0); }
+
+/* ====== TRIP SCREEN STYLING ====== */
+
+/* Hide by default */
+.hidden {
+  display: none;
+}
+
+/* Thinking animation */
+#thinking-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 4rem;
+  font-size: 1.2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#thinking-box .bulb {
+  width: 40px;
+  height: 40px;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#thinking-text::after {
+  content: '...';
+  animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ''; }
+  33%  { content: '.'; }
+  66%  { content: '..'; }
+  100% { content: '...'; }
+}
+
+/* Reveal boxes */
+#reveal-boxes {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.reveal-box {
+  padding: 1rem 2rem;
+  background: #f5f5f5;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  min-width: 200px;
+  text-align: center;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.reveal-box.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Result Card */
+.trip-card {
+  margin: 2rem auto;
+  background: white;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.trip-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stops-box {
+  background: #eee;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slotSpin 0.6s ease-in-out;
+}
+
+@keyframes slotSpin {
+  0% { transform: translateY(-50%) scale(1.1); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.trip-details {
+  text-align: center;
+}
+
+.mini-map {
+  width: 40px;
+  height: 40px;
+  margin-top: 0.5rem;
+}
+
+.trip-extra {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.trip-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-in-out;
+}
+
+.trip-buttons.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.trip-buttons button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  background: #222;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.trip-buttons button:hover {
+  background: #444;
+}
