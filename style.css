@@ -66,3 +66,22 @@ body {
   font-size: .9rem;
 }
 .station-btn:hover { background: #ececec; }
+.hub-heading { margin-top: 2rem; }
+
+#hub-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: center;
+  margin-top: .5rem;
+}
+
+.hub-btn {
+  padding: .6rem 1rem;
+  font-size: .95rem;
+  border: 2px solid #444;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.hub-btn:hover { background: #f0f0f0; }

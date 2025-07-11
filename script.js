@@ -1,3 +1,13 @@
+let currentTrip  = null;   // holds { line, startStation, numStops, terminal, destStation }
+let mysteryShown = false;  // whether the user is on the mystery screen
+
+/* ---------------- Major transfer hubs ---------------- */
+const hubLines = {
+  "Metro Center":  ["Red", "Orange", "Silver", "Blue"],
+  "Gallery Place": ["Red", "Green", "Yellow"],
+  "L'Enfant Plaza":["Green", "Yellow", "Blue", "Silver", "Orange"]
+};
+
 /* ===== Metro data (sample) ===== */
 import { metroLines } from './metro-lines.js';
 
@@ -45,31 +55,55 @@ function getTrip(line, startIndex) {
 }
 
 /** Render the result screen */
-function showTripResult(line, startStation, trip) {
+/** Render the mystery trip card (keeps destination secret) */
+function showMysteryTrip(line, startStation, trip) {
+  currentTrip  = { line, startStation, ...trip };   // store for later
+  mysteryShown = true;
+
   document.getElementById("game-area").innerHTML = `
     <h2>Your Journey</h2>
     <p>Start at <strong>${startStation}</strong> on the ${line.name} Line.</p>
     <p>Ride <strong>${trip.numStops}</strong> stop${trip.numStops > 1 ? "s" : ""}</p>
     <p><em>toward ${trip.terminal}</em>.</p>
-    <p>You’ll get off at <strong>${trip.destStation}</strong>.</p>
-    <button id="play-again">Play Again</button>
+
+    <button id="arrived-btn">I’ve arrived</button>
+    <button id="play-again">Restart</button>
   `;
 
-  document.getElementById("play-again").onclick = () => {
-    // restart at the line-selection step
+  document.getElementById("arrived-btn").onclick = handleArrival;
+  document.getElementById("play-again").onclick  = () => {
     selectedLine = null;
+    currentTrip  = null;
+    mysteryShown = false;
     renderLineSelection();
   };
 }
+function handleArrival() {
+  // For now: just reveal where they ended up
+  alert(
+    `Welcome to ${currentTrip.destStation}!\n\n` +
+    "(This is where we’ll soon list nearby bars/cafés.)"
+  );
+
+  // TODO: replace alert with renderActivityOptions(currentTrip)
+}
+
 
 /* STEP 1 – pick a line */
 function renderLineSelection() {
   const el = document.getElementById("game-area");
   el.innerHTML = `
-    <h2>I’m starting from…</h2>
-    <p>Select a Metro line:</p>
-    <div id="line-picker"></div>
-  `;
+   <h2>I’m starting from…</h2>
+  <p>Select a Metro line:</p>
+  <div id="line-picker"></div>
+
+  <h3 class="hub-heading">…or start at a transfer hub:</h3>
+  <div id="hub-picker">
+    ${Object.keys(hubLines)
+        .map(h => `<button class="hub-btn" data-hub="${h}">${h}</button>`)
+        .join("")}
+  </div>
+`;
 
   const picker = document.getElementById("line-picker");
   picker.innerHTML = ""; // clear just in case
@@ -89,6 +123,20 @@ function renderLineSelection() {
     renderStationSelection();
   };
 }
+/* ----- hub buttons ----- */
+document.getElementById("hub-picker").onclick = e => {
+  if (!e.target.classList.contains("hub-btn")) return;
+
+  const hubName      = e.target.dataset.hub;
+  const linesAtHub   = hubLines[hubName];
+  const chosenName   = linesAtHub[Math.floor(Math.random() * linesAtHub.length)];
+  const lineObj      = metroLines.find(l => l.name === chosenName);
+
+  // Proceed straight to the mystery-trip step
+  const startIndex   = lineObj.stations.indexOf(hubName);
+  const trip         = getTrip(lineObj, startIndex);
+  showMysteryTrip(lineObj, hubName, trip);
+};
 
 /* STEP 2 – pick a station */
 function renderStationSelection() {
@@ -115,8 +163,9 @@ picker.onclick = e => {
   const startStation = e.target.textContent;
   const startIndex   = selectedLine.stations.indexOf(startStation);
 
-  const trip = getTrip(selectedLine, startIndex);
-  showTripResult(selectedLine, startStation, trip);
+const trip = getTrip(selectedLine, startIndex);
+showMysteryTrip(selectedLine, startStation, trip);   // ← WAS showTripResult
+
 };
 
 
