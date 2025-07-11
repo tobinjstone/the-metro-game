@@ -20,11 +20,8 @@
   <!-- Game container (hidden until Start) -->
   <section id="game-area" hidden></section>
 
-  <!-- Scripts -->
-  <!-- If you keep everything in one script tag, nothing more to do.
-     If you split the data out, load it before your main `script.js`: -->
-<script src="metro-lines.js"></script>
-<script src="script.js" defer></script>
-
+  <!-- Scripts (data first, then main logic) -->
+  <script src="metro-lines.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
