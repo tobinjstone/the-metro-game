@@ -52,7 +52,6 @@ function renderLineSelection() {
     </div>
   `;
 
-  /* line circles */
   const lp = area.querySelector('#line-picker');
   metroLines.forEach((line, i) => {
     const b = document.createElement('button');
@@ -70,7 +69,6 @@ function renderLineSelection() {
     showScreen('station-screen');
   };
 
-  /* hub buttons */
   const hp = area.querySelector('#hub-picker');
   hp.onclick = e => {
     if (!e.target.classList.contains('hub-btn')) return;
@@ -143,21 +141,20 @@ function animateMysteryTrip(line, start, trip) {
   currentTrip = { line, start, ...trip };
 
   const screen = document.getElementById('trip-screen');
-  screen.querySelector('#thinking-box')?.classList.remove('hidden');
+  const lightbulb = screen.querySelector('#thinking-box');
+  lightbulb?.classList.remove('hidden');
+  lightbulb.style.display = 'flex';
 
-  // Sequence each step with delay
+  // Step 1: Hide bulb after a delay
   setTimeout(() => {
-    screen.querySelector('#thinking-box')?.classList.add('hidden');
+    lightbulb.style.display = 'none';
+
     const lineBox = screen.querySelector('#line-box');
-    lineBox.textContent = line.name + ' Line';
-    lineBox.classList.remove('hidden');
-    requestAnimationFrame(() => lineBox.classList.add('active'));
+    slotMachineEffect(lineBox, ['Red', 'Blue', 'Orange', 'Silver', 'Green', 'Yellow'], line.name + ' Line');
 
     setTimeout(() => {
       const dirBox = screen.querySelector('#direction-box');
-      dirBox.textContent = `toward ${trip.terminal}`;
-      dirBox.classList.remove('hidden');
-      requestAnimationFrame(() => dirBox.classList.add('active'));
+      slotMachineEffect(dirBox, ['Shady Grove', 'New Carrollton', 'Franconia', 'Largo Town Center', 'Ashburn'], `toward ${trip.terminal}`);
 
       setTimeout(() => {
         const resultCard = screen.querySelector('#result-card');
@@ -182,9 +179,24 @@ function animateMysteryTrip(line, start, trip) {
           };
         }, 500);
 
-      }, 700);
-    }, 700);
-  }, 1300);
+      }, 1500);
+    }, 1500);
+  }, 2000);
+}
+
+function slotMachineEffect(el, options, finalText) {
+  let i = 0;
+  const spin = setInterval(() => {
+    el.textContent = options[i % options.length];
+    i++;
+  }, 75);
+
+  setTimeout(() => {
+    clearInterval(spin);
+    el.textContent = finalText;
+    el.classList.remove('hidden');
+    requestAnimationFrame(() => el.classList.add('active'));
+  }, 1000);
 }
 
 function handleArrival() {
