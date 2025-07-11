@@ -135,26 +135,31 @@ function getTrip(line, startIdx) {
     terminal: choice === 'first' ? line.stations[0] : line.stations[last]
   };
 }
-// ─── GSAP text-swap “slot” helper ────────────────────────────────────
+// ─── GSAP text-swap helper that returns a Promise ───────────────
 function gsapSlot(el, items, finalText, spins = 40) {
-  // timeline lets us reuse/await later
-  const tl = gsap.timeline({
-    onComplete: () => (el.textContent = finalText)
-  });
+  // show box right away
+  el.classList.remove('hidden');
+  requestAnimationFrame(() => el.classList.add('active'));
 
-  const base = 0.04;              // 40 ms per frame at full speed
-
-  for (let i = 0; i < spins; i++) {
-    tl.to({}, {                   // dummy tween just controls timing
-      duration: base,
-      onStart: () => (el.textContent = items[i % items.length])
+  return new Promise(resolve => {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        el.textContent = finalText;   // lock the answer
+        resolve();                    // <── we can now await it
+      }
     });
-  }
 
-  // one long tail that eases to a stop
-  tl.to({}, { duration: 0.8, ease: "power3.out" });
-  return tl;
+    const base = 0.04;                // fastest frame = 40 ms
+    for (let i = 0; i < spins; i++) {
+      tl.to({}, { duration: base, onStart: () => {
+        el.textContent = items[i % items.length];
+      }});
+    }
+    tl.to({}, { duration: 0.8, ease: "power3.out" }); // ease-out tail
+  });
 }
+
+
 
 /* ---------- trip animation reveal ---------------------------------- */
 function animateMysteryTrip(line, start, trip) {
@@ -169,60 +174,61 @@ function animateMysteryTrip(line, start, trip) {
   setTimeout(() => {
     lightbulb.style.display = 'none';
 
-  const lineBox = screen.querySelector('#line-box');
-gsapSlot(
-  lineBox,
-  ['Red Line','Blue Line','Orange Line','Silver Line','Green Line','Yellow Line'],
-  `${line.name} Line`
-);   // now uses GSAP
+// -------- inside animateMysteryTrip(), right after lightbulb fades ----
+(async () => {
+  const lineBox  = screen.querySelector('#line-box');
+  const dirBox   = screen.querySelector('#direction-box');
+  const stopsBox = screen.querySelector('#stops-box');
 
-    setTimeout(() => {
-      const dirBox = screen.querySelector('#direction-box');
-      slotMachineEffect(dirBox, ['Shady Grove', 'New Carrollton', 'Franconia', 'Largo Town Center', 'Ashburn'], `toward ${trip.terminal}`);
+  // kick all three spins at once
+  const spinLine = gsapSlot(
+    lineBox,
+    ['Red Line','Blue Line','Orange Line','Silver Line','Green Line','Yellow Line'],
+    `${line.name} Line`
+  );
 
-      setTimeout(() => {
-        const resultCard = screen.querySelector('#result-card');
-        resultCard.querySelector('#stop-number').textContent = trip.numStops;
-        resultCard.querySelector('#trip-line').textContent = line.name + ' Line';
-        resultCard.querySelector('#trip-destination').textContent = trip.terminal;
-        resultCard.querySelector('#trip-subtext').textContent = `${trip.numStops} stop${trip.numStops > 1 ? 's' : ''}`;
-        resultCard.classList.remove('hidden');
-        requestAnimationFrame(() => resultCard.classList.add('active'));
+  const spinDir = gsapSlot(
+    dirBox,
+    ['toward Shady Grove','toward New Carrollton','toward Franconia',
+     'toward Largo Town Center','toward Ashburn'],
+    `toward ${trip.terminal}`
+  );
 
-        setTimeout(() => {
-          const btns = screen.querySelector('.trip-buttons');
-          btns.classList.remove('hidden');
-          requestAnimationFrame(() => btns.classList.add('fade-in'));
+  const spinStops = gsapSlot(
+    stopsBox,
+    Array.from({length: 15}, (_,i) => `${i+1}`),   // 1-15 spinner
+    `${trip.numStops}`
+  );
 
-          btns.querySelector('#arrived-btn').onclick = handleArrival;
-          btns.querySelector('#play-again').onclick = () => {
-            selectedLine = null;
-            currentTrip = null;
-            renderLineSelection();
-            showScreen('line-screen');
-          };
-        }, 500);
+  // wait until ALL three are finished
+  await Promise.all([spinLine, spinDir, spinStops]);
 
-      }, 1500);
-    }, 1500);
-  }, 2000);
-}
+  // ── NOW show the rest of the card ─────────────────────────────
+  const resultCard  = screen.querySelector('#result-card');
+  resultCard.querySelector('#stop-number').textContent     = trip.numStops;
+  resultCard.querySelector('#trip-line').textContent       = `${line.name} Line`;
+  resultCard.querySelector('#trip-destination').textContent= trip.terminal;
+  resultCard.querySelector('#trip-subtext').textContent    =
+      `${trip.numStops} stop${trip.numStops>1?'s':''}`;
 
-function slotMachineEffect(el, options, finalText) {
-  let i = 0;
-  const spin = setInterval(() => {
-    el.textContent = options[i % options.length];
-    i++;
-  }, 75);
+  const details = resultCard.querySelector('.trip-details');
+  details.classList.remove('hidden');
+  requestAnimationFrame(() => details.classList.add('fade-in'));
 
-  setTimeout(() => {
-    clearInterval(spin);
-    el.textContent = finalText;
-    el.classList.remove('hidden');
-    requestAnimationFrame(() => el.classList.add('active'));
-  }, 1000);
-}
+  // buttons (unchanged)
+  const btns = screen.querySelector('.trip-buttons');
+  btns.classList.remove('hidden');
+  requestAnimationFrame(() => btns.classList.add('fade-in'));
+  btns.querySelector('#arrived-btn').onclick = handleArrival;
+  btns.querySelector('#play-again').onclick  = () => {
+    selectedLine = null;
+    currentTrip  = null;
+    renderLineSelection();
+    showScreen('line-screen');
+  };
+})();
+
 
 function handleArrival() {
   alert(`Welcome to ${currentTrip.destStation}! (Attractions coming soon.)`);
-}
+}})}

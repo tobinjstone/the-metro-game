@@ -267,3 +267,11 @@ body {
 .trip-buttons button:hover {
   background: #444;
 }
+.trip-details.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: detailsIn 0.6s forwards ease-out;
+}
+@keyframes detailsIn {
+  to { opacity: 1; transform: translateY(0); }
+}
