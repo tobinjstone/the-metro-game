@@ -565,4 +565,9 @@ justify-items: center;
 .arrival-text.fade-in,
 .trip-buttons.fade-in { opacity:1; transform:none; }
 
-
+.text-link {
+  color: #323233;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif !important;
+}
