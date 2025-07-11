@@ -80,7 +80,7 @@ function renderLineSelection() {
 
     const startIdx = line.stations.indexOf(hub);
     const trip     = getTrip(line, startIdx);
-    showMysteryTrip(line, hub, trip);
+    animateMysteryTrip(line, hub, trip);
     showScreen('trip-screen');
   };
 }
@@ -107,7 +107,7 @@ function renderStationSelection() {
     if (!e.target.classList.contains('station-btn')) return;
     const start   = e.target.textContent;
     const trip    = getTrip(selectedLine, selectedLine.stations.indexOf(start));
-    showMysteryTrip(selectedLine, start, trip);
+    animateMysteryTrip(selectedLine, start, trip);
     showScreen('trip-screen');
   };
 
@@ -138,27 +138,53 @@ function getTrip(line, startIdx) {
   };
 }
 
-/* ---------- mystery trip screen ------------------------------------- */
-function showMysteryTrip(line, start, trip) {
+/* ---------- trip animation reveal ---------------------------------- */
+function animateMysteryTrip(line, start, trip) {
   currentTrip = { line, start, ...trip };
 
-  const area = document.getElementById('trip-screen');
-  area.innerHTML = `
-    <h2>Your Journey</h2>
-    <p>Start at <strong>${start}</strong> on the ${line.name} Line.</p>
-    <p>Ride <strong>${trip.numStops}</strong> stop${trip.numStops>1?'s':''}</p>
-    <p><em>toward ${trip.terminal}</em>.</p>
-    <button id="arrived-btn">I’ve arrived</button>
-    <button id="play-again">Restart</button>
-  `;
+  const screen = document.getElementById('trip-screen');
+  screen.querySelector('#thinking-box')?.classList.remove('hidden');
 
-  area.querySelector('#arrived-btn').onclick = handleArrival;
-  area.querySelector('#play-again').onclick  = () => {
-    selectedLine = null;
-    currentTrip  = null;
-    renderLineSelection();
-    showScreen('line-screen');
-  };
+  // Sequence each step with delay
+  setTimeout(() => {
+    screen.querySelector('#thinking-box')?.classList.add('hidden');
+    const lineBox = screen.querySelector('#line-box');
+    lineBox.textContent = line.name + ' Line';
+    lineBox.classList.remove('hidden');
+    requestAnimationFrame(() => lineBox.classList.add('active'));
+
+    setTimeout(() => {
+      const dirBox = screen.querySelector('#direction-box');
+      dirBox.textContent = `toward ${trip.terminal}`;
+      dirBox.classList.remove('hidden');
+      requestAnimationFrame(() => dirBox.classList.add('active'));
+
+      setTimeout(() => {
+        const resultCard = screen.querySelector('#result-card');
+        resultCard.querySelector('#stop-number').textContent = trip.numStops;
+        resultCard.querySelector('#trip-line').textContent = line.name + ' Line';
+        resultCard.querySelector('#trip-destination').textContent = trip.terminal;
+        resultCard.querySelector('#trip-subtext').textContent = `${trip.numStops} stop${trip.numStops > 1 ? 's' : ''}`;
+        resultCard.classList.remove('hidden');
+        requestAnimationFrame(() => resultCard.classList.add('active'));
+
+        setTimeout(() => {
+          const btns = screen.querySelector('.trip-buttons');
+          btns.classList.remove('hidden');
+          requestAnimationFrame(() => btns.classList.add('fade-in'));
+
+          btns.querySelector('#arrived-btn').onclick = handleArrival;
+          btns.querySelector('#play-again').onclick = () => {
+            selectedLine = null;
+            currentTrip = null;
+            renderLineSelection();
+            showScreen('line-screen');
+          };
+        }, 500);
+
+      }, 700);
+    }, 700);
+  }, 1300);
 }
 
 function handleArrival() {
