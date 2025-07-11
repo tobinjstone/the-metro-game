@@ -192,10 +192,7 @@ function animateMysteryTrip(line, startStation, trip) {
   setTimeout(async () => {
     bulb.style.display = "none";
 
-    // show headings & card
-    const heading = screen.querySelector("#journey-heading");
-    heading.classList.remove("hidden");
-    requestAnimationFrame(() => heading.classList.add("active"));
+  
 
     const card = screen.querySelector("#result-card");
     card.classList.remove("hidden");
