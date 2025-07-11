@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DC Metro Roulette</title>
+  <title>The Metro Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -11,7 +11,7 @@
   <!-- INTRO ------------------------------------------------------------>
   <section id="intro-screen" class="screen active">
     <img id="logo" src="images/themetrogame.svg" alt="DC Metro Roulette logo" />
-    <button id="start-btn">START GAME</button>
+    <button id="start-btn">Board the Unknown</button>
   </section>
 
   <!-- PICK LINE / HUB -------------------------------------------------->
@@ -19,6 +19,26 @@
 
   <!-- PICK STATION ----------------------------------------------------->
   <section id="station-screen" class="screen" hidden></section>
+
+  <!-- CATEGORY FILTER -------------------------------------------------->
+<!-- CATEGORY FILTER -------------------------------------------------->
+<section id="category-screen" class="screen" hidden>
+  <h2 class="screen-title">Pick a vibe</h2>
+
+  <div id="category-grid" class="category-grid">
+    <button class="cat-btn" data-cat="Coffee"><img src="images/coffee.svg"><span>Coffee</span></button>
+    <button class="cat-btn" data-cat="Drinks"><img src="images/drinks.svg"><span>Drinks</span></button>
+ <button class="cat-btn" data-cat="Food"><img src="images/food.svg"><span>Food</span></button>
+    <button class="cat-btn" data-cat="Activity"><img src="images/activity.svg"><span>Activity</span></button>
+    <button class="cat-btn" data-cat="Shopping"><img src="images/shopping.svg"><span>Shopping</span></button>
+    <button class="cat-btn" data-cat="Surprise"><img src="images/random.svg"><span>Surprise me</span></button>
+  </div>
+<div class="cat-back-btn-wrap">
+  <button id="cat-back-btn" class="text-link">⬅ Back</button>
+</div>
+
+</section>
+
 
   <!-- MYSTERY TRIP ----------------------------------------------------->
  <section id="trip-screen" class="screen" hidden>
@@ -29,53 +49,69 @@
   </div>
   
   <!-- NEW -->
-   <div id="journey-heading" class="journey-title hidden">
-  <h2 >Your Journey</h2>
-   </div>
+
 
 
   <!-- Animated Reveal Boxes -->
-  <div id="reveal-boxes">
-    <div id="line-box" class="reveal-box hidden">Red Line</div>
-    <div id="direction-box" class="reveal-box hidden">toward Glenmont</div>
+<div id="reveal-boxes">
+  <div class="reveal-box hidden">
+    <span>
+      <span id="line-box"></span>
+    </span>
+  </div>
+</div>
+
+
+
+ 
+
+
   </div>
 
   <!-- Trip Result Card -->
   <div id="result-card" class="trip-card hidden">
     <div class="stops-box">
-      <span id="stop-number">4</span>
+  
+<span>
+  <span id="stop-number"></span>
+</span>
+
     </div>
    <div class="trip-details">
-  <div id="trip-header">Your Results</div>
+  <div id="trip-header" class="trip-detail">Your Metro Trip</div>
 
   <!-- NEW combined line + direction -->
-  <div id="trip-route" class="trip-route"></div>
+
 
   <!-- already present -->
-  <div id="trip-origin" class="trip-origin"></div>
-  <div id="trip-subtext" class="trip-subtext"></div>
+  <div id="trip-origin" class="trip-detail trip-origin "></div>
+  <div id="trip-subtext" class="trip-detail trip-subtext"></div>
 </div>
-
+<div id="route-vis"></div>  <!-- animated route map lives here -->
       <p id="arrival-text" class="arrival-text hidden"></p>
   </div>
 
   <!-- Buttons -->
   <div class="trip-buttons hidden">
     <button id="arrived-btn">I’ve arrived</button>
-    <button id="play-again">Roll Again</button>
+    <button id="play-again">Start Over</button>
   </div>
 </section>
 <!-- VENUE REVEAL ------------------------------------------------------->
+<!-- VENUE RESULT ------------------------------------------------------------>
 <section id="venue-screen" class="screen" hidden>
-  <div class="venue-card">
-    <h2>You’re going to…</h2>
-    <p id="venue-name"    class="big"></p>
-    <p id="venue-address" class="note"></p>  <!-- NEW -->
-    <p id="venue-note"    class="note"></p>
+<div id="venue-card" class="venue-card">
+  <h2 id="venue-name"    class="vline"></h2>
+  <p  id="venue-address" class="vline"></p>
+  <p  id="venue-note"    class="vline"></p>
 
-    <button id="play-again-2">Roll Again</button>
-  </div>
+  <button id="new-place-btn" class="primary-btn">Find a new place</button>
+</div>
+
+  <!-- new global restart button -->
+  <button id="start-over-btn" class="text-link">Start over</button>
 </section>
+
 
 <div class="game-footer"> 
   <p>Created by <a href="https://x.com/tobinjstone" target="_blank">Tobin Stone</a> &copy; 2025</p>
@@ -84,7 +120,8 @@
 </div>
   <!-- DATA then LOGIC (ES-modules) ------------------------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-  
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/TextPlugin.min.js"></script>
+
   <script type="module" src="metro-lines.js"></script>
   <script type="module" src="script.js"></script>
 </body>

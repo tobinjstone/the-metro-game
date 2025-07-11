@@ -1,5 +1,8 @@
 ﻿@import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
 
+:root { --boxFade: 0.4s; }      /* keep in sync with T.boxFade */
+
+
 /* base layout */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,7 +29,7 @@ body {
   transform: translateX(-50%) scale(.8);
   width: 80%;                    /* make it a bit smaller */
   margin: 0;                       /* kill the old bottom-gap */
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   z-index: 1000;                   /* float above every screen */
   pointer-events: none;            /* never intercept clicks */
 }
@@ -44,7 +47,7 @@ justify-items: center;
   padding: 0.75rem 2rem;
   font-family: Helvetica, sans-serif !important;
   font-size: 1.3rem;
-  font-weight: 100;
+  font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   background:  #ededed;
@@ -206,11 +209,11 @@ justify-items: center;
 
 .reveal-box {
   padding: 1rem 2rem;
-  background: #feffff;
-  border-radius: 1rem;
-    border: 1.35px solid #323233;
-  min-width: 325px;
-  max-width: 325px;
+  background: #feffff !important;
+  border-radius: 1rem !important;
+    border: 1.35px solid #323233 !important;
+  min-width: 325px !important;
+  max-width: 325px !important;
   text-align: center;
   transform: translateY(20px);
   opacity: 0;
@@ -242,6 +245,7 @@ justify-items: center;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease;
+  min-height: 45vh;
 }
 
 .trip-card.active {
@@ -263,6 +267,7 @@ justify-items: center;
   justify-content: center;
   animation: slotSpin 0.6s ease-in-out;
   flex: 0 0 70px;
+  overflow: visible;
 }
 
 @keyframes slotSpin {
@@ -296,7 +301,7 @@ justify-items: center;
   justify-content: space-between; /* push to the edges */
   gap: 1rem;                    /* same spacing you already had */
   max-width: 325px;             /* = reveal-box width */
-  margin: 2rem auto 0;          /* center the row under the card */
+  margin: 1rem auto 0;          /* center the row under the card */
   align-items: stretch;         /* equal height */
   opacity: 0;                   /* keep fade-in animation */
   transition: all 0.4s ease-in-out;
@@ -335,32 +340,17 @@ justify-items: center;
 /* mini-dot that sits before “Red Line” etc. */
 .line-dot{
   display:inline-block;
-  align-items: center;
-  width:0.9em;
-  height:0.9em;
+ vertical-align: middle;
+  width:1.1em;
+  height:1.1em;
   border-radius:50%;
   margin-right:0.4em;
   vertical-align:middle;
+    flex-shrink: 0;  
 }
 /* add a thin outline so the Silver dot doesn’t disappear */
 .line-dot.silver{ border:1px solid #777; }
 
-.journey-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  opacity: 0;
-  transition: all 0.5s ease-out;
-  background-color: #d8d8d9;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  max-width: 325px;
-  border: 1.35px solid #323233;
-}
-
-.journey-title.active {
-  transform: translateY(0);
-  opacity: 1;
-}
 
 #trip-header {
   font-weight: bold;
@@ -401,6 +391,10 @@ justify-items: center;
   max-width:325px;
   text-align:center;
   animation:fadeIn .6s ease-out;
+  min-height: 30vh !important;
+    display: flex;            /* vertical stack */
+  flex-direction: column;
+  padding-bottom: 1.25rem;
 }
 .big  { font-size:1.8rem; font-weight:700; margin:.5rem 0; }
 .note { font-size:1.1rem;  color:#444;     margin-bottom:2rem; }
@@ -435,3 +429,125 @@ justify-items: center;
 .game-footer a{
  color: black;  
 }
+
+/* category grid */
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(2,120px);
+  grid-auto-rows:120px;
+  gap:1rem;
+  justify-content:center;
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+}
+.cat-btn{
+  border:1.35px solid #323233;
+  border-radius:12px;
+  background:#feffff;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:.5rem;
+  transition: background .25s;
+  font-family: 'Helvetica Neue', sans-serif !important;
+  font-weight:500;
+  font-size: 1rem;
+  color: #323233;
+}
+
+#cat-back-btn{
+    padding: 0.25rem .5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  max-width: 40%;
+  transition: background 0.3s ease;
+  flex: 1 10 0;
+  background: #d8d8d9;
+  border-radius: 0.5rem;
+  border: 1.35px solid #323233;
+}
+.cat-btn:hover{ background:#ececec; }
+.cat-btn img{ width:60px;height:60px;margin-bottom:.3rem; }
+
+/* make sure lines can slide completely off-screen */
+.venue-card{ overflow:hidden; position:relative; }
+
+/* keeps the SVG responsive and nicely padded */
+#route-vis svg{ width:100%; height:60px; display:block; overflow:visible; }
+
+/* keeps flap chars from poking outside the boxes */
+#line-box,
+#direction-box,
+#stop-number{
+  display: flex !important;   /* preserves intrinsic width */
+  align-items:center;
+}
+.char{ display:inline-block; }
+
+#new-place-btn{
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  min-width: 155px;
+  transition: background 0.3s ease;
+  flex: 1 10 0;
+  background: #d8d8d9;
+  border-radius: 0.5rem;
+  border: 1.35px solid #323233;
+  margin-top: auto;         /* pushes the button to the bottom */
+  align-self: center;  
+  max-height: 30%; 
+}
+
+#start-over-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  min-width: 325px;
+  transition: background 0.3s ease;
+  flex: 1 10 0;
+  background: #d8d8d9;
+  border-radius: 0.5rem;
+  border: 1.35px solid #323233;
+  margin-top: 1rem;
+}
+
+.cat-back-btn-wrap {
+  justify-content: center;
+  translate: 0, 25px;
+}
+
+.trip-detail  {           /* initial state */
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all .4s ease-out;
+}
+.trip-detail.fade-in {    /* final state */
+  opacity: 1;
+  transform: translateY(0);
+}
+  .line-dot::after {
+  content: attr(data-letter);      /* set in JS */
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.55em;
+  color: #fff;
+  line-height: 1em;
+}
+
+.reveal-box,
+.arrival-text,
+.trip-buttons {
+  transition: all var(--boxFade, 0.4s) ease-out;
+}
+
+.reveal-box.active   { opacity:1;  }
+.arrival-text.fade-in,
+.trip-buttons.fade-in { opacity:1; transform:none; }
+
+
