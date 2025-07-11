@@ -1,19 +1,23 @@
-// ------------------------------ imports ----------------------------------
-import { metroLines } from "./metro-lines.js";
+/* script.js (very top) */
+import { metroLines } from './metro-lines.js';
 
-
-
-/* ---------- add near the top of script.js ---------- */
-let places = {};                  // will hold the big dataset
+let places = {};                            // station → [place, …]
 
 async function loadPlaces() {
-  const resp  = await fetch('places-dataset-clean.json');
-  places      = await resp.json();   // { 'Metro Center': [ … ] , … }
+  const resp = await fetch('./places-dataset-clean.json');
+  if (!resp.ok) throw new Error(`Couldn't load places (${resp.status})`);
+
+  const rows = await resp.json();           // flat array
+  // reshape into a lookup table keyed by station
+  places = rows.reduce((acc, row) => {
+    (acc[row.station] ??= []).push(row);
+    return acc;
+  }, {});
 }
 
-/* bootstrap */
+/* wait for the dataset, THEN wire up the Start button */
 document.addEventListener('DOMContentLoaded', async () => {
-  await loadPlaces();              // <- make sure it’s ready before any rolls
+  await loadPlaces();                       // ⬅ critical
   document.getElementById('start-btn').onclick = () => {
     pinLogo();
     renderLineSelection();
@@ -263,36 +267,24 @@ requestAnimationFrame(() => btnWrap.classList.add("fade-in")); // <— add this
 
 /* ------------------------------ VENUE reveal ----------------------------- */
 function handleArrival() {
-  // ➊ grab your curated picks (if any)
-  const curated = venues[currentTrip.destStation] || [];
-
-  // ➋ grab ALL Google-Places results for this station
   const nearby  = places[currentTrip.destStation] || [];
 
-  // ➌ optional: filter or score (examples below)
-  // const nearby = (places[currentTrip.destStation] || [])
-  //                  .filter(p => p.rating >= 4.0 && p.distance_m <= 250);
-
-  // ➍ mash them together so curated items surface slightly more often
-  const pickPool = [
-    ...curated,            // each appears once
-    ...nearby              // each appears once
-  ];
+  // light weighting: curated + everything within the JSON
+  const pickPool = [...curated, ...nearby];
 
   const venue = pickPool.length
-      ? pickPool[Math.floor(Math.random() * pickPool.length)]
-      : { name : '…no spot found 🤷‍♂️',
-          address : '',
-          note : 'Explore & tell us what you discover!' };
+      ? pickPool[Math.random() * pickPool.length | 0]
+      : { name:'…no spot found 🤷‍♂️',
+          address:'',
+          note:'Explore & tell us what you discover!' };
 
+  const vs = document.getElementById('venue-screen');
+  vs.querySelector('#venue-name'   ).textContent = venue.name;
+  vs.querySelector('#venue-address').textContent = venue.address;
+  vs.querySelector('#venue-note'   ).textContent = venue.note;
+  vs.querySelector('#play-again-2' ).onclick    = restart;
 
-  const vs = document.getElementById("venue-screen");
-  vs.querySelector("#venue-name").textContent    = venue.name;
-  vs.querySelector("#venue-address").textContent = venue.address;   // NEW
-  vs.querySelector("#venue-note").textContent    = venue.note;
-  vs.querySelector("#play-again-2").onclick      = restart;
-
-  showScreen("venue-screen");
+  showScreen('venue-screen');
 }
 
 
