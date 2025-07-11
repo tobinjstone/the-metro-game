@@ -30,11 +30,28 @@ const hubLines = {
   "L'Enfant Plaza": ['Green','Yellow','Blue','Silver','Orange']
 };
 
+/* ---------- turn intro logo into a fixed header ---------- */
+function pinLogo() {
+  const logo = document.getElementById('logo');
+  if (!logo || logo.classList.contains('sticky')) return;   // first time only
+
+  // Lift the logo element out of #intro-screen so it won't be hidden
+  document.body.appendChild(logo);
+
+  // One frame later let CSS animate it to the header spot
+  requestAnimationFrame(() => logo.classList.add('sticky'));
+}
+
 /* ------------------------------ bootstrap -------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('start-btn').onclick = () => {
     renderLineSelection();
-    showScreen('line-screen');
+   showScreen('line-screen');
+  };
+  document.getElementById('start-btn').onclick = () => {
+   pinLogo();                       // ⬅ NEW
+    renderLineSelection();
+   showScreen('line-screen');
   };
 });
 
@@ -194,6 +211,12 @@ function animateMysteryTrip(line, startStation, trip) {
   /* after a brief pause, hide bulb and begin slot reels */
   setTimeout(async () => {
     bulb.style.display = 'none';
+
+    // show "Your Journey" title
+const heading = screen.querySelector('#journey-heading');
+heading.classList.remove('hidden');
+requestAnimationFrame(() => heading.classList.add('active'));
+
 
     // 1) bring the card onscreen
     const card = screen.querySelector('#result-card');

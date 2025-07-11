@@ -1,8 +1,10 @@
-﻿/* base layout */
+﻿@import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
+
+/* base layout */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: Helvetica, sans-serif !important;
+  font-family: 'Helvetica Neue', sans-serif !important;
   height: 100vh;
   display: grid;
   place-content: center;
@@ -11,11 +13,29 @@ body {
 }
 
 #logo {
-  max-width: 320px;
-  width: 90%;
+  min-width: 20rem;
   margin-bottom: 1.5rem;
   align-content: center;
 }
+
+/* logo ➜ glue it to the top after Start is hit */
+#logo.sticky {
+  position: fixed;
+  top: .75rem;                     /* where it finally parks */
+  left: 50%;
+  transform: translateX(-50%) scale(.8);
+  width: 80%;                    /* make it a bit smaller */
+  margin: 0;                       /* kill the old bottom-gap */
+  margin-top: 1.5rem;
+  z-index: 1000;                   /* float above every screen */
+  pointer-events: none;            /* never intercept clicks */
+}
+
+/* nice slide-up motion */
+#logo {
+  transition: transform 600ms cubic-bezier(.42,0,2,1);
+}
+
 #intro-screen {
 justify-items: center;
 }
@@ -171,7 +191,7 @@ justify-items: center;
 
 /* Reveal boxes */
 #reveal-boxes {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -230,15 +250,15 @@ justify-items: center;
   border-radius: 0.8rem;
   border: 1.35px solid #323233;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: slotSpin 0.6s ease-in-out;
-  flex: 0 0 60px;
+  flex: 0 0 80px;
 }
 
 @keyframes slotSpin {
@@ -249,7 +269,8 @@ justify-items: center;
 .trip-details {
   text-align: center;
     flex: 1 1 180px;                /* flexible but needs some min width */
-  text-align: left;               /* labels look better left-aligned */
+  text-align: left; 
+  font-size: 19px;               /* labels look better left-aligned */
 }
 
 .mini-map {
@@ -288,7 +309,6 @@ justify-items: center;
   background: #222;
   color: white;
   border: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -317,3 +337,24 @@ justify-items: center;
 }
 /* add a thin outline so the Silver dot doesn’t disappear */
 .line-dot.silver{ border:1px solid #777; }
+
+.journey-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+  background-color: #d8d8d9;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  max-width: 325px;
+  border: 1.35px solid #323233;
+}
+
+.journey-title.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#trip-header {
+  font-weight: bold;
+}
