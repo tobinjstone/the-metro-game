@@ -135,6 +135,26 @@ function getTrip(line, startIdx) {
     terminal: choice === 'first' ? line.stations[0] : line.stations[last]
   };
 }
+// ─── GSAP text-swap “slot” helper ────────────────────────────────────
+function gsapSlot(el, items, finalText, spins = 40) {
+  // timeline lets us reuse/await later
+  const tl = gsap.timeline({
+    onComplete: () => (el.textContent = finalText)
+  });
+
+  const base = 0.04;              // 40 ms per frame at full speed
+
+  for (let i = 0; i < spins; i++) {
+    tl.to({}, {                   // dummy tween just controls timing
+      duration: base,
+      onStart: () => (el.textContent = items[i % items.length])
+    });
+  }
+
+  // one long tail that eases to a stop
+  tl.to({}, { duration: 0.8, ease: "power3.out" });
+  return tl;
+}
 
 /* ---------- trip animation reveal ---------------------------------- */
 function animateMysteryTrip(line, start, trip) {
@@ -149,8 +169,12 @@ function animateMysteryTrip(line, start, trip) {
   setTimeout(() => {
     lightbulb.style.display = 'none';
 
-    const lineBox = screen.querySelector('#line-box');
-    slotMachineEffect(lineBox, ['Red', 'Blue', 'Orange', 'Silver', 'Green', 'Yellow'], line.name + ' Line');
+  const lineBox = screen.querySelector('#line-box');
+gsapSlot(
+  lineBox,
+  ['Red Line','Blue Line','Orange Line','Silver Line','Green Line','Yellow Line'],
+  `${line.name} Line`
+);   // now uses GSAP
 
     setTimeout(() => {
       const dirBox = screen.querySelector('#direction-box');
