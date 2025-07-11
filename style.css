@@ -468,6 +468,14 @@ justify-items: center;
   background: #d8d8d9;
   border-radius: 0.5rem;
   border: 1.35px solid #323233;
+    font-family: 'Helvetica Neue', sans-serif !important;
+  font-weight:500;
+  font-size: 1rem;
+  color: #323233;
+
+ .cat-back-btn text-link {
+  color: #323233
+ } 
 }
 .cat-btn:hover{ background:#ececec; }
 .cat-btn img{ width:60px;height:60px;margin-bottom:.3rem; }
