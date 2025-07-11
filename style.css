@@ -1,4 +1,35 @@
-﻿/* ---- Line selection ---- */
+﻿/* --- base layout --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #fafafa;
+  text-align: center;
+}
+
+#logo {
+  max-width: 320px;
+  width: 80%;
+  margin-bottom: 1.5rem;
+}
+
+#start-btn,
+#back-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #0072ce;
+  color: #fff;
+}
+#start-btn:hover,
+#back-btn:hover { filter: brightness(1.1); }
+
+/* --- line picker --- */
 #line-picker {
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +37,6 @@
   justify-content: center;
   margin-top: 1rem;
 }
-
 .line-circle {
   width: 64px;
   height: 64px;
@@ -15,14 +45,13 @@
   cursor: pointer;
 }
 
-/* ---- Station selection ---- */
+/* --- station picker --- */
 #station-picker {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.5rem;
   margin: 1.5rem 0;
 }
-
 .station-btn {
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -30,15 +59,5 @@
   background: #f9f9f9;
   cursor: pointer;
   font-size: 0.9rem;
-  text-align: center;
 }
-
-.station-btn:hover {
-  background: #ececec;
-}
-
-/* back button */
-#back-btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-}
+.station-btn:hover { background: #ececec; }

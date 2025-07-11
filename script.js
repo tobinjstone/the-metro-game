@@ -1,80 +1,76 @@
-/* ---------- GLOBAL STATE ---------- */
+/* ===== Metro data (sample) ===== */
+import { metroLines } from "./metro-lines.js";   // if you made it an ES module
+
+/* ============================== */
+
 let selectedLine = null;
 
-/* ---------- STEP 0 ---------- */
+/* STEP 0 – intro → line select */
 function startGame() {
-  // hide intro, show game container
-  document.getElementById('intro').hidden = true;
-  document.getElementById('game-area').hidden = false;
-
+  document.getElementById("intro").hidden = true;
+  document.getElementById("game-area").hidden = false;
   renderLineSelection();
 }
 
-/* ---------- STEP 1: PICK A LINE ---------- */
+/* STEP 1 – pick a line */
 function renderLineSelection() {
-  const container = document.getElementById('game-area');
-  container.innerHTML = `
+  const el = document.getElementById("game-area");
+  el.innerHTML = `
     <h2>I’m starting from…</h2>
     <p>Select a Metro line:</p>
     <div id="line-picker"></div>
   `;
 
-  const picker = document.getElementById('line-picker');
+  const picker = document.getElementById("line-picker");
+  picker.innerHTML = ""; // clear just in case
 
-  metroLines.forEach((line, index) => {
-    const btn = document.createElement('button');
-    btn.className = 'line-circle';
+  metroLines.forEach((line, i) => {
+    const btn = document.createElement("button");
+    btn.className = "line-circle";
     btn.style.background = line.color;
     btn.title = `${line.name} Line`;
-    btn.dataset.index = index;          // store which line this is
+    btn.dataset.index = i;
     picker.appendChild(btn);
   });
 
-  // click handler (event delegation so we only add one listener)
-  picker.addEventListener('click', (e) => {
-    if (e.target.classList.contains('line-circle')) {
-      const idx = Number(e.target.dataset.index);
-      selectedLine = metroLines[idx];
-      renderStationSelection();
-    }
-  });
+  picker.onclick = (e) => {
+    if (!e.target.classList.contains("line-circle")) return;
+    selectedLine = metroLines[Number(e.target.dataset.index)];
+    renderStationSelection();
+  };
 }
 
-/* ---------- STEP 2: PICK A STATION ---------- */
+/* STEP 2 – pick a station */
 function renderStationSelection() {
-  const container = document.getElementById('game-area');
-  container.innerHTML = `
+  const el = document.getElementById("game-area");
+  el.innerHTML = `
     <h2>${selectedLine.name} Line</h2>
     <p>Choose your starting station:</p>
     <div id="station-picker"></div>
     <button id="back-btn">⬅ Back</button>
   `;
 
-  const picker = document.getElementById('station-picker');
+  const picker = document.getElementById("station-picker");
 
   selectedLine.stations.forEach((stop) => {
-    const btn = document.createElement('button');
-    btn.className = 'station-btn';
+    const btn = document.createElement("button");
+    btn.className = "station-btn";
     btn.textContent = stop;
     picker.appendChild(btn);
   });
 
-  // station click
-  picker.addEventListener('click', (e) => {
-    if (e.target.classList.contains('station-btn')) {
-      const chosenStation = e.target.textContent;
-      console.log(`Line: ${selectedLine.name}, Station: ${chosenStation}`);
-      // TODO → proceed to next game step here
-      alert(`You picked ${chosenStation} on the ${selectedLine.name} Line`);
-    }
-  });
+  picker.onclick = (e) => {
+    if (!e.target.classList.contains("station-btn")) return;
+    const station = e.target.textContent;
+    console.log(`Line: ${selectedLine.name}, Station: ${station}`);
+    alert(`You picked ${station} on the ${selectedLine.name} Line`);
+    // TODO: next game phase here
+  };
 
-  // back button
-  document.getElementById('back-btn').addEventListener('click', renderLineSelection);
+  document.getElementById("back-btn").onclick = renderLineSelection;
 }
 
-/* ---------- KICK OFF ---------- */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('start-btn')
-          .addEventListener('click', startGame);
+/* wire up Start button */
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("start-btn").onclick = startGame;
 });

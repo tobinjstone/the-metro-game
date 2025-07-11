@@ -2,26 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DC Metro Roulette</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Desktop overlay (hidden by default) -->
-
+  <!-- Intro screen -->
   <main id="intro">
-    <!-- Placeholder logo; swap the src later -->
-    <img id="logo" src="https://raw.githubusercontent.com/tobinjstone/the-metro-game/e2fb8dc8b98773c82a77d36297e6fd4dbbddbd6c/images/themetrogame.svg?token=A24LBINYGE6SWJB6H34DUWLIOBL2O" alt="DC Metro Roulette logo">
-
+    <img id="logo"
+         src="images\themetrogame.svg"
+         alt="DC Metro Roulette logo" />
     <button id="start-btn">Start Game</button>
   </main>
 
-  <!-- Area the game will live in once it starts -->
-  <section id="game-area" hidden>
-    <!-- We’ll add real content here later -->
-  </section>
+  <!-- Game container (hidden until Start) -->
+  <section id="game-area" hidden></section>
 
-  <script src="script.js" defer></script>
+  <!-- Scripts -->
+  <!-- If you keep everything in one script tag, nothing more to do.
+     If you split the data out, load it before your main `script.js`: -->
+<script src="metro-lines.js"></script>
+<script src="script.js" defer></script>
+
 </body>
 </html>
