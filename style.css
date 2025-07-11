@@ -571,3 +571,12 @@ justify-items: center;
   font-weight: bold;
   font-family: 'Helvetica Neue', sans-serif !important;
 }
+
+.play-again, .arrived-btn {
+    color: #323233;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif !important;
+  font-size: 18px;
+}
+}
