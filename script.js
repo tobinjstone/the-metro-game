@@ -1,3 +1,4 @@
+
 function isMobileDevice() {
   return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
          .test(navigator.userAgent);
@@ -16,15 +17,20 @@ function startGame() {
 
 // attach the click handler once the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  if (!isMobileDevice()) {
-    // Show overlay, hide everything else
+  const urlParams  = new URLSearchParams(location.search);
+  const devBypass  = urlParams.has('dev');   // ?dev  bypasses the guard
+
+  if (!devBypass && !isMobileDevice()) {
+    // ↓ Real code that shows the overlay and stops the game
     document.getElementById('desktop-warning').hidden = false;
-    document.getElementById('intro').hidden = true;
-    document.getElementById('game-area').hidden = true;
-    return;          // skip all further setup
+    document.getElementById('intro').hidden           = true;
+    document.getElementById('game-area').hidden       = true;
+    return;   // ⟵ prevent any further game setup
   }
 
-  // Only runs on mobile:
-  document.getElementById('start-btn')
-          .addEventListener('click', startGame);
+  // Normal startup path (mobile device *or* ?dev present)
+  document
+    .getElementById('start-btn')
+    .addEventListener('click', startGame);
 });
+
