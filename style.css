@@ -88,18 +88,20 @@ justify-items: center;
   margin: 1.5rem 0;
 
   /* NEW ➜ keep it on-screen */
-  max-height: 60vh;      /* 60% of the viewport height */
+  max-height: 30vh;      /* 60% of the viewport height */
   overflow-y: auto;      /* vertical scroll if it overflows */
   padding-right: .25rem; /* tiny room so scrollbar doesn’t cover text */
 }
 
 .station-btn {
   padding: .5rem;
-  border: 1px solid #ccc;
+  border: 1.15px solid #323233;
   border-radius: 4px;
-  background: #f9f9f9;
+  background: #feffff;
   cursor: pointer;
   font-size: .9rem;
+  font-family: 'Helvetica Neue', sans-serif !important;
+  font-weight: bold;
 }
 .station-btn:hover { background: #ececec; }
 .hub-heading { margin-top: 2rem; }
@@ -252,13 +254,13 @@ justify-items: center;
   padding: 1rem;
   font-size: 2.5rem;
   font-weight: bold;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: slotSpin 0.6s ease-in-out;
-  flex: 0 0 80px;
+  flex: 0 0 70px;
 }
 
 @keyframes slotSpin {
@@ -270,7 +272,7 @@ justify-items: center;
   text-align: center;
     flex: 1 1 180px;                /* flexible but needs some min width */
   text-align: left; 
-  font-size: 19px;               /* labels look better left-aligned */
+  font-size: 18px;               /* labels look better left-aligned */
 }
 
 .mini-map {
@@ -280,7 +282,7 @@ justify-items: center;
 }
 
 .trip-extra {
-  flex: 0 0 100%;                 /* forces a line break */
+  flex: 0 0 50%;                 /* forces a line break */
   margin-top: .75rem;
   text-align: center;             /* keep it centred like before */
 }
@@ -288,12 +290,13 @@ justify-items: center;
 /* Buttons */
 .trip-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
+  flex-direction: row;          /* side-by-side */
+  justify-content: space-between; /* push to the edges */
+  gap: 1rem;                    /* same spacing you already had */
+  max-width: 325px;             /* = reveal-box width */
+  margin: 2rem auto 0;          /* center the row under the card */
+  align-items: stretch;         /* equal height */
+  opacity: 0;                   /* keep fade-in animation */
   transition: all 0.4s ease-in-out;
 }
 
@@ -304,13 +307,15 @@ justify-items: center;
 
 .trip-buttons button {
   padding: 0.75rem 1.5rem;
-  border-radius: 1rem;
   font-size: 1rem;
-  background: #222;
-  color: white;
   border: none;
   cursor: pointer;
+  min-width: 155px;
   transition: background 0.3s ease;
+  flex: 1 10 0;
+  background: #feffff;
+  border-radius: 0.5rem;
+  border: 1.35px solid #323233;
 }
 
 .trip-buttons button:hover {
@@ -357,4 +362,56 @@ justify-items: center;
 
 #trip-header {
   font-weight: bold;
+}
+
+/* arrival line */
+.arrival-text{
+  flex: 0 0 100%;          /* forces its own row inside the flex card   */
+  margin-top: .5rem;
+  font-size: 20px; 
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all .4s ease-out;
+}
+.arrival-text.fade-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.station-search{
+  width: 100%;
+  max-width: 320px;          /* same width as the card/grid */
+  padding: .6rem .8rem;
+  margin: .5rem auto 1rem;   /* centres it & gives breathing room */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* ===== venue screen ===== */
+.venue-card{
+  background:#feffff;
+  border:1.35px solid #323233;
+  border-radius:1rem;
+  padding:2rem 2.5rem;
+  max-width:325px;
+  text-align:center;
+  animation:fadeIn .6s ease-out;
+}
+.big  { font-size:1.8rem; font-weight:700; margin:.5rem 0; }
+.note { font-size:1.1rem;  color:#444;     margin-bottom:2rem; }
+
+#play-again-2 {
+    padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  min-width: 155px;
+  transition: background 0.3s ease;
+  flex: 1 10 0;
+  background: #d8d8d9;
+  border-radius: 0.5rem;
+  border: 1.35px solid #323233;
 }

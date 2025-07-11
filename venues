@@ -1,0 +1,13 @@
+// venues.js  – curated spots (expand at will)
+export const venues = {
+  'Dupont Circle': [
+    { name: 'Emissary Coffee',  note: 'Casual Aussie-run café' },
+    { name: 'Board Room',      note: 'Games + 20 drafts'      },
+    { name: 'The Admiral',     note: 'Solid late-night bar'   }
+  ],
+  'Navy Yard–Ballpark': [
+    { name: 'Bluejacket',      note: 'Warehouse brewery'      },
+    { name: 'Ice Cream Jubilee', note: 'Creative scoops'      }
+  ],
+  // …
+};

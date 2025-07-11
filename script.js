@@ -1,290 +1,283 @@
 // ------------------------------ imports ----------------------------------
-import { metroLines } from './metro-lines.js';
+import { metroLines } from "./metro-lines.js";
+import { venues }     from "./venues.js";
 
 /* ------------------------------ view helpers ----------------------------- */
 function showScreen(id) {
-  // slide the current "active" screen out and bring the new one in
-  document.querySelectorAll('.screen.active').forEach(el => {
-    el.classList.add('slide-out');
-    el.classList.remove('active');
-    el.addEventListener('transitionend', () => (el.hidden = true), { once: true });
+  // slide current screen out
+  document.querySelectorAll(".screen.active").forEach(el => {
+    el.classList.add("slide-out");
+    el.classList.remove("active");
+    el.addEventListener("transitionend", () => (el.hidden = true), { once: true });
   });
 
+  // bring next screen in
   const next = document.getElementById(id);
   next.hidden = false;
-  next.classList.add('slide-in');
+  next.classList.add("slide-in");
   requestAnimationFrame(() => {
-    next.classList.remove('slide-in');
-    next.classList.add('active');
+    next.classList.remove("slide-in");
+    next.classList.add("active");
   });
 }
 
 /* ------------------------------ global state ----------------------------- */
-let selectedLine = null;   // the Metro line the user picked
-let currentTrip  = null;   // cached trip once generated
+let selectedLine   = null;           // metroLines[x]
+let currentTrip    = null;           // { line, startStation, numStops, destStation, terminal }
+let preferredCategory = null;        // reserved for future activity picker
 
-// quick map of the three big transfer hubs so we can offer a fast-start
+// handy map of big hubs so users can quick‑start from transfer points
 const hubLines = {
-  'Metro Center'   : ['Red','Orange','Silver','Blue'],
-  'Gallery Place'  : ['Red','Green','Yellow'],
-  "L'Enfant Plaza": ['Green','Yellow','Blue','Silver','Orange']
+  "Metro Center"  : ["Red","Orange","Silver","Blue"],
+  "Gallery Place" : ["Red","Green","Yellow"],
+  "L'Enfant Plaza": ["Green","Yellow","Blue","Silver","Orange"]
 };
 
-/* ---------- turn intro logo into a fixed header ---------- */
+/* ------------------------------ logo helper ------------------------------ */
 function pinLogo() {
-  const logo = document.getElementById('logo');
-  if (!logo || logo.classList.contains('sticky')) return;   // first time only
+  const logo = document.getElementById("logo");
+  if (!logo || logo.classList.contains("sticky")) return; // only once
 
-  // Lift the logo element out of #intro-screen so it won't be hidden
-  document.body.appendChild(logo);
-
-  // One frame later let CSS animate it to the header spot
-  requestAnimationFrame(() => logo.classList.add('sticky'));
+  document.body.appendChild(logo);               // move out of intro container
+  requestAnimationFrame(() => logo.classList.add("sticky"));
 }
 
-/* ------------------------------ bootstrap -------------------------------- */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('start-btn').onclick = () => {
-    renderLineSelection();
-   showScreen('line-screen');
-  };
-  document.getElementById('start-btn').onclick = () => {
-   pinLogo();                       // ⬅ NEW
-    renderLineSelection();
-   showScreen('line-screen');
-  };
-});
-
 /* ------------------------------ GSAP slot helper ------------------------- */
-// Injected via CDN in <index.html>: <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-// This helper animates any element's textContent like a slot reel.
-// ─ spins = how many *frames* (not seconds) of random swaps before stopping
+// (CDN already loaded in index.html)
 export function gsapSlot(el, items, finalText, spins = 40) {
-  // ensure the element is visible so the user can see the flicker
-  el.classList.remove('hidden');
-  requestAnimationFrame(() => el.classList.add('active'));
+  el.classList.remove("hidden");
+  requestAnimationFrame(() => el.classList.add("active"));
 
   return new Promise(resolve => {
     const tl = gsap.timeline({
       onComplete: () => {
-        el.textContent = finalText; // lock the real value
+        el.textContent = finalText;
         resolve();
       }
     });
 
-    const base = 0.04; // 40 ms per quick frame
+    const base = 0.04; // 40 ms per hop
     for (let i = 0; i < spins; i++) {
       tl.to({}, {
         duration: base,
         onStart: () => (el.textContent = items[i % items.length])
       });
     }
-
-    // a single ease‑out tail to mimic the reel slowing down
-    tl.to({}, { duration: 0.8, ease: 'power3.out' });
+    tl.to({}, { duration: 0.8, ease: "power3.out" });
   });
 }
 
-/* ------------------------------ line picker ------------------------------ */
+/* ------------------------------ LINE picker ------------------------------ */
 function renderLineSelection() {
-  const screen = document.getElementById('line-screen');
+  const screen = document.getElementById("line-screen");
   screen.innerHTML = `
     <h2 class="screen-title">I’m starting from…</h2>
-
     <p class="subtitle">Select a Metro line:</p>
     <div id="line-picker" class="line-picker"></div>
-
     <p class="subtitle">…or start at a transfer hub:</p>
-  <div id="hub-picker" class="hub-picker">
-    ${Object.keys(hubLines).map(h => `<button class="hub-btn" data-hub="${h}">${h}</button>`).join('')}
-  </div>
-`;
+    <div id="hub-picker" class="hub-picker">
+      ${Object.keys(hubLines).map(h => `<button class="hub-btn" data-hub="${h}">${h}</button>`).join("")}
+    </div>`;
 
-  /* line circles */
-  const lp = screen.querySelector('#line-picker');
- metroLines.forEach((line, idx) => {
-  const btn = document.createElement('button');
-  btn.className = 'line-circle';
-  btn.style.background = line.color;
+  /* create line circles */
+  const lp = screen.querySelector("#line-picker");
+  metroLines.forEach((line, idx) => {
+    const btn = document.createElement("button");
+    btn.className        = "line-circle";
+    btn.style.background = line.color;
+    btn.textContent      = line.name[0];
+    btn.title            = `${line.name} Line`;
+    btn.dataset.idx      = idx;
+    if (line.name === "Yellow") btn.style.color = "#000"; // contrast
+    lp.appendChild(btn);
+  });
 
-  /* line circles … (existing code that builds each <button>) */
-lp.onclick = e => {
-  const btn = e.target.closest('.line-circle');   // <— ignore stray clicks
-  if (!btn) return;
-
-  // 1) identify the line
-  const idx = Number(btn.dataset.idx);            // 0…5 from dataset
-  selectedLine = metroLines[idx];
-
-  // 2) show the station list for that line
-  renderStationSelection();
-  showScreen('station-screen');
-};
-
-  // ✨ add the single-letter label
-  btn.textContent = line.name[0];       // “R”, “O”, “S”, “B”, “Y”, “G”
-  if (line.name === 'Yellow') btn.style.color = '#000'; // better contrast
-
-  btn.title = `${line.name} Line`;
-  btn.dataset.idx = idx;
-  lp.appendChild(btn);
-});
+  // delegated click
+  lp.onclick = e => {
+    const t = e.target.closest(".line-circle");
+    if (!t) return;
+    selectedLine = metroLines[Number(t.dataset.idx)];
+    renderStationSelection();
+    showScreen("station-screen");
+  };
 
   /* hub quick‑start */
-  const hp = screen.querySelector('#hub-picker');
+  const hp = screen.querySelector("#hub-picker");
   hp.onclick = e => {
-    if (!e.target.classList.contains('hub-btn')) return;
-    const hub = e.target.dataset.hub;
-    const randomLineName = hubLines[hub][Math.floor(Math.random() * hubLines[hub].length)];
-    const line          = metroLines.find(l => l.name === randomLineName);
-    const startIdx      = line.stations.indexOf(hub);
-    const trip          = getTrip(line, startIdx);
+    const t = e.target.closest(".hub-btn");
+    if (!t) return;
+    const hub = t.dataset.hub;
+    const randomLineName = hubLines[hub][Math.floor(Math.random()*hubLines[hub].length)];
+    const line = metroLines.find(l => l.name === randomLineName);
+    const startIdx = line.stations.indexOf(hub);
+    const trip = getTrip(line, startIdx);
     animateMysteryTrip(line, hub, trip);
-    showScreen('trip-screen');
+    showScreen("trip-screen");
   };
 }
 
-/* ------------------------------ station picker --------------------------- */
+/* ------------------------------ STATION picker --------------------------- */
 function renderStationSelection() {
-  const screen = document.getElementById('station-screen');
+  const screen = document.getElementById("station-screen");
   screen.innerHTML = `
     <h2 class="screen-title">${selectedLine.name} Line</h2>
     <p class="subtitle">Choose your starting station:</p>
+    <input id="station-search" class="station-search" type="text" placeholder="Type a station…">
     <div id="station-picker" class="station-picker"></div>
-    <button id="back-btn" class="text-link">⬅ Back</button>
-  `;
+    <button id="back-btn" class="text-link">⬅ Back</button>`;
 
-  const sp = screen.querySelector('#station-picker');
+  const sp = screen.querySelector("#station-picker");
   selectedLine.stations.forEach(stop => {
-    const b = document.createElement('button');
-    b.className = 'station-btn';
+    const b = document.createElement("button");
+    b.className   = "station-btn";
     b.textContent = stop;
     sp.appendChild(b);
   });
 
+  // pick station
   sp.onclick = e => {
-    if (!e.target.classList.contains('station-btn')) return;
-    const start = e.target.textContent;
+    const t = e.target.closest(".station-btn");
+    if (!t) return;
+    const start = t.textContent;
     const trip  = getTrip(selectedLine, selectedLine.stations.indexOf(start));
     animateMysteryTrip(selectedLine, start, trip);
-    showScreen('trip-screen');
+    showScreen("trip-screen");
   };
 
-  screen.querySelector('#back-btn').onclick = () => {
+  /* live search */
+  const search = screen.querySelector("#station-search");
+  search.addEventListener("input", () => {
+    const q = search.value.trim().toLowerCase();
+    sp.querySelectorAll(".station-btn").forEach(btn => {
+      btn.style.display = btn.textContent.toLowerCase().includes(q) ? "" : "none";
+    });
+  });
+  search.focus();
+
+  /* back */
+  screen.querySelector("#back-btn").onclick = () => {
     renderLineSelection();
-    showScreen('line-screen');
+    showScreen("line-screen");
   };
 }
 
-/* ------------------------------ trip logic helper ------------------------ */
+/* ------------------------------ TRIP helper ------------------------------ */
 function getTrip(line, startIdx) {
-  const last   = line.stations.length - 1;
-  const toFirst = startIdx;            // stops to the first station (index 0)
-  const toLast  = last - startIdx;     // stops to the terminus at the end
-
-  // randomly decide whether to go "forward" or "backward" as long as both exist
-  const direction = (toFirst && toLast)
-      ? (Math.random() < 0.5 ? 'first' : 'last')
-      : (toFirst ? 'first' : 'last');
-
-  const maxStops = direction === 'first' ? toFirst : toLast;
-  const numStops = Math.floor(Math.random() * maxStops) + 1;  // 1 … max
-  const destIdx  = direction === 'first' ? startIdx - numStops : startIdx + numStops;
+  const last     = line.stations.length - 1;
+  const toFirst  = startIdx;          // stops to index 0
+  const toLast   = last - startIdx;   // stops to terminus
+  const direction = (toFirst && toLast) ? (Math.random() < 0.5 ? "first" : "last")
+                                        : (toFirst ? "first" : "last");
+  const maxStops  = direction === "first" ? toFirst : toLast;
+  const numStops  = Math.floor(Math.random() * maxStops) + 1; // 1 … max
+  const destIdx   = direction === "first" ? startIdx - numStops : startIdx + numStops;
 
   return {
     numStops,
-    destStation: line.stations[destIdx],
-    terminal   : direction === 'first' ? line.stations[0] : line.stations[last]
+    destStation : line.stations[destIdx],
+    terminal    : direction === "first" ? line.stations[0] : line.stations[last]
   };
 }
 
-/* ------------------------------ trip reveal animation -------------------- */
+/* ------------------------------ TRIP animation --------------------------- */
 function animateMysteryTrip(line, startStation, trip) {
   currentTrip = { line, startStation, ...trip };
-  const screen = document.getElementById('trip-screen');
+  const screen = document.getElementById("trip-screen");
 
-  /* thinking light‑bulb */
-  const bulb = screen.querySelector('#thinking-box');
-  bulb?.classList.remove('hidden');
-  bulb.style.display = 'flex';
+  // show thinking
+  const bulb = screen.querySelector("#thinking-box");
+  bulb.classList.remove("hidden");
+  bulb.style.display = "flex";
 
-  /* after a brief pause, hide bulb and begin slot reels */
   setTimeout(async () => {
-    bulb.style.display = 'none';
+    bulb.style.display = "none";
 
-    // show "Your Journey" title
-const heading = screen.querySelector('#journey-heading');
-heading.classList.remove('hidden');
-requestAnimationFrame(() => heading.classList.add('active'));
+    // show headings & card
+    const heading = screen.querySelector("#journey-heading");
+    heading.classList.remove("hidden");
+    requestAnimationFrame(() => heading.classList.add("active"));
 
+    const card = screen.querySelector("#result-card");
+    card.classList.remove("hidden");
+    requestAnimationFrame(() => card.classList.add("active"));
 
-    // 1) bring the card onscreen
-    const card = screen.querySelector('#result-card');
-    card.classList.remove('hidden');
-    requestAnimationFrame(() => card.classList.add('active'));
+    // spin!
+    const lineBox = screen.querySelector("#line-box");
+    const dirBox  = screen.querySelector("#direction-box");
+    const stopNum = card.querySelector("#stop-number");
 
-    // 2) grab the three text targets we want to spin
-// 2) grab the three text targets we want to spin
-const lineBox  = screen.querySelector('#line-box');      // ⟸ changed
-const dirBox   = screen.querySelector('#direction-box'); // ⟸ changed
-const stopSpan = card.querySelector('#stop-number');     // stays the same
+    const spinLine = gsapSlot(lineBox,
+      ["Red Line","Blue Line","Orange Line","Silver Line","Green Line","Yellow Line"],
+      `${line.name} Line`);
 
+    const spinDir  = gsapSlot(dirBox,
+      ["⮕ Shady Grove","⮕ Glenmont","⮕ New Carrollton","⮕ Largo Town Center","⮕ Franconia","⮕ Huntington","⮕ Branch Ave","⮕ Ashburn"],
+      `⮕ ${trip.terminal}`);
 
-    // 3) start all three reel animations at once
-    const spinLine  = gsapSlot(
-      lineBox,
-      ['Red Line','Blue Line','Orange Line','Silver Line','Green Line','Yellow Line'],
-      `${line.name} Line`
-    );
+    const spinStop = gsapSlot(stopNum,
+      Array.from({length:15},(_,i)=>`${i+1}`), `${trip.numStops}`);
 
-    const spinDir   = gsapSlot(
-      dirBox,
-      ['⮕ Shady Grove','⮕ Glenmont','⮕ New Carrollton','⮕ Largo Town Center',
-       '⮕ Franconia','⮕ Huntington','⮕ Branch Ave','⮕ Ashburn'],
-      `⮕ ${trip.terminal}`
-    );
+    await Promise.all([spinLine, spinDir, spinStop]);
 
-    const spinStops = gsapSlot(
-      stopSpan,
-      Array.from({ length: 15 }, (_, i) => `${i + 1}`),
-      `${trip.numStops}`
-    );
+    // populate final details
+    stopNum.textContent = trip.numStops;
+    const dot = `<span class="line-dot ${line.name === "Silver" ? "silver" : ""}" style="background:${line.color}"></span>`;
+    card.querySelector("#trip-route").innerHTML =
+  `${dot}${line.name} Line towards ${trip.terminal}`;
+    lineBox.innerHTML = `${dot}${line.name} Line`;
+    card.querySelector("#trip-origin").textContent =
+  `Depart: ${startStation}`;
+    card.querySelector("#trip-subtext").textContent =
+  `${trip.numStops} stop${trip.numStops !== 1 ? "s" : ""}`;
+  
+    const arrival = card.querySelector("#arrival-text");
+    arrival.textContent = `You’ll arrive at ${trip.destStation}.`;
+    arrival.classList.remove("hidden");
+    requestAnimationFrame(() => arrival.classList.add("fade-in"));
 
-    // 4) wait for ALL three promises to resolve (every reel stopped)
-    await Promise.all([spinLine, spinDir, spinStops]);
+    // buttons visible
+    const btnWrap = screen.querySelector(".trip-buttons");
+btnWrap.classList.remove("hidden");
+requestAnimationFrame(() => btnWrap.classList.add("fade-in")); // <— add this
 
-    // 5) populate summary text
-    stopSpan.textContent = trip.numStops; // already done by gsapSlot, but safe
-    const tripLineEl = card.querySelector('#trip-line');
-const dotHTML = `<span class="line-dot ${line.name === 'Silver' ? 'silver' : ''}" 
-                        style="background:${line.color}"></span>`;
-tripLineEl.innerHTML = `${dotHTML}${line.name} Line`;
-const dot = `<span class="line-dot ${line.name==='Silver'?'silver':''}" 
-                    style="background:${line.color}"></span>`;
-lineBox.innerHTML = `${dot}${line.name} Line`;      // replaces plain text
-    card.querySelector('#trip-destination').textContent = trip.terminal;
-    card.querySelector('#trip-subtext').textContent     = `${trip.numStops} stop${trip.numStops > 1 ? 's' : ''}`;
-
-    // 6) reveal details + buttons
-    const details = card.querySelector('.trip-details');
-    details.classList.remove('hidden');
-    requestAnimationFrame(() => details.classList.add('fade-in'));
-
-    const btns = screen.querySelector('.trip-buttons');
-    btns.classList.remove('hidden');
-    requestAnimationFrame(() => btns.classList.add('fade-in'));
-
-    btns.querySelector('#arrived-btn').onclick = handleArrival;
-    btns.querySelector('#play-again').onclick  = () => {
-      selectedLine = null;
-      currentTrip  = null;
-      renderLineSelection();
-      showScreen('line-screen');
-    };
-  }, 2000); // 2‑second thinking pause
+    btnWrap.querySelector("#arrived-btn").onclick = handleArrival;
+    btnWrap.querySelector("#play-again").onclick = restart;
+  }, 700); // thinking pause
 }
 
-/* ------------------------------ arrival handler -------------------------- */
+/* ------------------------------ VENUE reveal ----------------------------- */
 function handleArrival() {
-  alert(`Welcome to ${currentTrip.destStation}! (Attractions coming soon.)`);
+  const list  = venues[currentTrip.destStation] || [];
+  const venue = list.length
+      ? list[Math.floor(Math.random() * list.length)]
+      : { name: "…no curated spot yet 😅",
+          address: "",
+          note: "Explore & tell us what you find!" };
+
+  const vs = document.getElementById("venue-screen");
+  vs.querySelector("#venue-name").textContent    = venue.name;
+  vs.querySelector("#venue-address").textContent = venue.address;   // NEW
+  vs.querySelector("#venue-note").textContent    = venue.note;
+  vs.querySelector("#play-again-2").onclick      = restart;
+
+  showScreen("venue-screen");
 }
+
+
+/* ------------------------------ restart helper --------------------------- */
+function restart() {
+  selectedLine = null;
+  currentTrip  = null;
+  preferredCategory = null;
+  renderLineSelection();
+  showScreen("line-screen");
+}
+
+/* ------------------------------ bootstrap -------------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("start-btn").onclick = () => {
+    pinLogo();
+    renderLineSelection();
+    showScreen("line-screen");
+  };
+});

@@ -45,12 +45,18 @@
     <div class="stops-box">
       <span id="stop-number">4</span>
     </div>
-    <div class="trip-details">
-      <div id="trip-header"> Your Results</div>
-      <div id="trip-line">Red Line</div>
-      <div id="trip-destination">Glenmont</div>
-      <div id="trip-subtext">4 stops</div>
-    </div>
+   <div class="trip-details">
+  <div id="trip-header">Your Results</div>
+
+  <!-- NEW combined line + direction -->
+  <div id="trip-route" class="trip-route"></div>
+
+  <!-- already present -->
+  <div id="trip-origin" class="trip-origin"></div>
+  <div id="trip-subtext" class="trip-subtext"></div>
+</div>
+
+      <p id="arrival-text" class="arrival-text hidden"></p>
   </div>
 
   <!-- Buttons -->
@@ -59,6 +65,18 @@
     <button id="play-again">Roll Again</button>
   </div>
 </section>
+<!-- VENUE REVEAL ------------------------------------------------------->
+<section id="venue-screen" class="screen" hidden>
+  <div class="venue-card">
+    <h2>You’ve unlocked…</h2>
+    <p id="venue-name"    class="big"></p>
+    <p id="venue-address" class="note"></p>  <!-- NEW -->
+    <p id="venue-note"    class="note"></p>
+
+    <button id="play-again-2">Roll Again</button>
+  </div>
+</section>
+
 
   <!-- DATA then LOGIC (ES-modules) ------------------------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
