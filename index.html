@@ -1,19 +1,30 @@
-﻿<!-- index.html -->
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>DC Metro Roulette</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main id="app">
-    <h1>DC Metro Roulette</h1>
-    <button id="spin">Spin!</button>
-    <p id="result"></p>
+  <!-- Desktop overlay (hidden by default) -->
+<section id="desktop-warning" hidden>
+  <p>This game is only available on mobile.<br>
+     Please open it on your phone or tablet. 📱</p>
+</section>
+
+  <main id="intro">
+    <!-- Placeholder logo; swap the src later -->
+    <img id="logo" src="https://raw.githubusercontent.com/tobinjstone/the-metro-game/e2fb8dc8b98773c82a77d36297e6fd4dbbddbd6c/images/themetrogame.svg?token=A24LBINYGE6SWJB6H34DUWLIOBL2O" alt="DC Metro Roulette logo">
+
+    <button id="start-btn">Start Game</button>
   </main>
+
+  <!-- Area the game will live in once it starts -->
+  <section id="game-area" hidden>
+    <!-- We’ll add real content here later -->
+  </section>
 
   <script src="script.js" defer></script>
 </body>
