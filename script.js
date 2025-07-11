@@ -90,6 +90,20 @@ function renderLineSelection() {
   btn.className = 'line-circle';
   btn.style.background = line.color;
 
+  /* line circles … (existing code that builds each <button>) */
+lp.onclick = e => {
+  const btn = e.target.closest('.line-circle');   // <— ignore stray clicks
+  if (!btn) return;
+
+  // 1) identify the line
+  const idx = Number(btn.dataset.idx);            // 0…5 from dataset
+  selectedLine = metroLines[idx];
+
+  // 2) show the station list for that line
+  renderStationSelection();
+  showScreen('station-screen');
+};
+
   // ✨ add the single-letter label
   btn.textContent = line.name[0];       // “R”, “O”, “S”, “B”, “Y”, “G”
   if (line.name === 'Yellow') btn.style.color = '#000'; // better contrast
@@ -202,9 +216,9 @@ const stopSpan = card.querySelector('#stop-number');     // stays the same
 
     const spinDir   = gsapSlot(
       dirBox,
-      ['toward Shady Grove','toward Glenmont','toward New Carrollton','toward Largo Town Center',
-       'toward Franconia','toward Huntington','toward Branch Ave','toward Ashburn'],
-      `toward ${trip.terminal}`
+      ['⮕ Shady Grove','⮕ Glenmont','⮕ New Carrollton','⮕ Largo Town Center',
+       '⮕ Franconia','⮕ Huntington','⮕ Branch Ave','⮕ Ashburn'],
+      `⮕ ${trip.terminal}`
     );
 
     const spinStops = gsapSlot(
@@ -218,7 +232,13 @@ const stopSpan = card.querySelector('#stop-number');     // stays the same
 
     // 5) populate summary text
     stopSpan.textContent = trip.numStops; // already done by gsapSlot, but safe
-    card.querySelector('#trip-line').textContent        = `${line.name} Line`;
+    const tripLineEl = card.querySelector('#trip-line');
+const dotHTML = `<span class="line-dot ${line.name === 'Silver' ? 'silver' : ''}" 
+                        style="background:${line.color}"></span>`;
+tripLineEl.innerHTML = `${dotHTML}${line.name} Line`;
+const dot = `<span class="line-dot ${line.name==='Silver'?'silver':''}" 
+                    style="background:${line.color}"></span>`;
+lineBox.innerHTML = `${dot}${line.name} Line`;      // replaces plain text
     card.querySelector('#trip-destination').textContent = trip.terminal;
     card.querySelector('#trip-subtext').textContent     = `${trip.numStops} stop${trip.numStops > 1 ? 's' : ''}`;
 

@@ -191,6 +191,9 @@ justify-items: center;
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.5s ease-out;
+  align-items: center;
+  justify-content: center;
+  display: flex; 
 }
 
 .reveal-box.active {
@@ -209,8 +212,9 @@ justify-items: center;
   max-width: 325px;
   display: flex;
   gap: 1rem;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: row;
+  align-items: flex-start;   /* keep the boxes flush to the top edge */
+  flex-wrap: wrap;           
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease;
@@ -234,6 +238,7 @@ justify-items: center;
   align-items: center;
   justify-content: center;
   animation: slotSpin 0.6s ease-in-out;
+  flex: 0 0 60px;
 }
 
 @keyframes slotSpin {
@@ -243,6 +248,8 @@ justify-items: center;
 
 .trip-details {
   text-align: center;
+    flex: 1 1 180px;                /* flexible but needs some min width */
+  text-align: left;               /* labels look better left-aligned */
 }
 
 .mini-map {
@@ -252,8 +259,9 @@ justify-items: center;
 }
 
 .trip-extra {
-  margin-top: 1rem;
-  font-size: 0.9rem;
+  flex: 0 0 100%;                 /* forces a line break */
+  margin-top: .75rem;
+  text-align: center;             /* keep it centred like before */
 }
 
 /* Buttons */
@@ -296,3 +304,16 @@ justify-items: center;
 @keyframes detailsIn {
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* mini-dot that sits before “Red Line” etc. */
+.line-dot{
+  display:inline-block;
+  align-items: center;
+  width:0.9em;
+  height:0.9em;
+  border-radius:50%;
+  margin-right:0.4em;
+  vertical-align:middle;
+}
+/* add a thin outline so the Silver dot doesn’t disappear */
+.line-dot.silver{ border:1px solid #777; }
