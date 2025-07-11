@@ -584,4 +584,14 @@ justify-items: center;
   font-family: 'Helvetica Neue', sans-serif !important;
   font-size: 18px;
 }
+
+#venue-message {
+  font-size: 1.2rem;
+  color: #323233;
+  font-family: 'Helvetica Neue', sans-serif !important;
+}
+
+.venue-block {
+  margin: auto;
+  vertical-align: top;
 }
