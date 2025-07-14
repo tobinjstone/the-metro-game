@@ -146,8 +146,22 @@ let preferredCategory = null;        // reserved for future activity picker
 const hubLines = {
   "Metro Center"  : ["Red","Orange","Silver","Blue"],
   "Gallery Place" : ["Red","Green","Yellow"],
-  "L'Enfant Plaza": ["Green","Yellow","Blue","Silver","Orange"]
+  "L'Enfant Plaza": ["Green","Yellow","Blue","Silver","Orange"],
 };
+/* ------------------------------ helper: randomize at shared‑track stops -- */
+function pickLineForStation(station, currentLine){
+  // Which lines actually serve this platform?
+  const linesHere = metroLines.filter(l => l.stations.includes(station));
+
+  // Big three hubs were already randomized by the hub‑button logic.
+  if (hubLines[station]) return currentLine;
+
+  // If there’s more than one line, choose one at random; else keep original.
+  return (linesHere.length > 1)
+        ? linesHere[Math.floor(Math.random() * linesHere.length)]
+        : currentLine;
+}
+
 
 /* ------------------------------ logo helper ------------------------------ */
 function pinLogo() {
@@ -334,10 +348,12 @@ function renderCategorySelection() {
     const b = e.target.closest('.cat-btn');
     if (!b) return;
     preferredCategory = b.dataset.cat;
-    const trip = getTrip(
-      selectedLine,
-      selectedLine.stations.indexOf(chosenStartStation)
-    );
+selectedLine = pickLineForStation(chosenStartStation, selectedLine);
+
+const trip = getTrip(
+  selectedLine,
+  selectedLine.stations.indexOf(chosenStartStation)
+);
     animateMysteryTrip(selectedLine, chosenStartStation, trip);
     showScreen('trip-screen');
   };
