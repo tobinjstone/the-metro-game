@@ -331,28 +331,6 @@
     },
     {
       "station": "McPherson Square",
-      "distance_m": 102,
-      "place_id": "ChIJ4Umi-L23t4kR5CRxncFyRis",
-      "name": "Devon & Blakely",
-      "rating": 4,
-      "user_ratings_total": 113,
-      "price_level": 2,
-      "types": [
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.90044689999999,
-        "lng": -77.0332576
-      },
-      "address": "Southern Building, 803 15th Street Northwest, Washington"
-    },
-    {
-      "station": "McPherson Square",
       "distance_m": 67,
       "place_id": "ChIJx1-IHr63t4kRcquq9ByDA8I",
       "name": "Siroc Restaurant",
@@ -625,71 +603,6 @@
     },
     {
       "station": "McPherson Square",
-      "distance_m": 147,
-      "place_id": "ChIJ4crOar63t4kRPT1dmwVaE7c",
-      "name": "Joe & the Juice - 1500 K Street - Café, Juice Bar and Sandwich Shop",
-      "rating": 3.5,
-      "user_ratings_total": 549,
-      "price_level": 2,
-      "types": [
-        "meal_takeaway",
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9021493,
-        "lng": -77.0349691
-      },
-      "address": "1500 K Street Northwest St, Washington"
-    },
-    {
-      "station": "McPherson Square",
-      "distance_m": 348,
-      "place_id": "ChIJF1u5nVy3t4kRqR3zr_H9H5A",
-      "name": "Blue Bottle Coffee",
-      "rating": 4.5,
-      "user_ratings_total": 132,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.90427189999999,
-        "lng": -77.0349714
-      },
-      "address": "1100 15th Street Northwest Space #6, Washington"
-    },
-    {
-      "station": "McPherson Square",
-      "distance_m": 185,
-      "place_id": "ChIJjSZ6L763t4kRw5zljJiQQfI",
-      "name": "Gregorys Coffee",
-      "rating": 4.2,
-      "user_ratings_total": 209,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.902962,
-        "lng": -77.0339769
-      },
-      "address": "1000 Vermont Avenue Northwest, Washington"
-    },
-    {
-      "station": "McPherson Square",
       "distance_m": 250,
       "place_id": "ChIJPytnSr-3t4kRNrBp2C9XVW4",
       "name": "Custom Tours of DC - Private Tour Agency",
@@ -949,29 +862,6 @@
     },
     {
       "station": "McPherson Square",
-      "distance_m": 458,
-      "place_id": "ChIJjdk5B6S3t4kRZYR-ZEzNYm4",
-      "name": "Wawa",
-      "rating": 3.5,
-      "user_ratings_total": 266,
-      "price_level": 1,
-      "types": [
-        "convenience_store",
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.90530999999999,
-        "lng": -77.03238
-      },
-      "address": "1 Thomas Circle Northwest, Washington"
-    },
-    {
-      "station": "McPherson Square",
       "distance_m": 361,
       "place_id": "ChIJaa4QEpW3t4kR48t4GS8Qvgg",
       "name": "Elizabeth's",
@@ -989,28 +879,6 @@
         "lng": -77.03124749999999
       },
       "address": "1341 L Street Northwest Suite 1, Washington"
-    },
-    {
-      "station": "McPherson Square",
-      "distance_m": 335,
-      "place_id": "ChIJtxkPmbu3t4kRG_-bo-COp7M",
-      "name": "Jimmy John's",
-      "rating": 3.9,
-      "user_ratings_total": 240,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9038935,
-        "lng": -77.0316461
-      },
-      "address": "1101 14th Street Northwest #103, Washington"
     },
     {
       "station": "McPherson Square",
@@ -1196,26 +1064,6 @@
     },
     {
       "station": "Federal Triangle",
-      "distance_m": 225,
-      "place_id": "ChIJm58UV5e3t4kR-YGGDcKtV5U",
-      "name": "Elephant & Castle",
-      "rating": 4.1,
-      "user_ratings_total": 3626,
-      "price_level": 2,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8957756,
-        "lng": -77.028415
-      },
-      "address": "1201 Pennsylvania Avenue Northwest, Washington"
-    },
-    {
-      "station": "Federal Triangle",
       "distance_m": 149,
       "place_id": "ChIJDcAfqHawt4kRAWyr2VKHjTI",
       "name": "National Children's Museum",
@@ -1388,87 +1236,6 @@
     },
     {
       "station": "Federal Triangle",
-      "distance_m": 473,
-      "place_id": "ChIJqxnAqJe3t4kR-39hP3bgSfU",
-      "name": "Devon & Blakely",
-      "rating": 4.1,
-      "user_ratings_total": 136,
-      "price_level": 2,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8974957,
-        "lng": -77.0308297
-      },
-      "address": "1331 F Street Northwest, Washington"
-    },
-    {
-      "station": "Federal Triangle",
-      "distance_m": 456,
-      "place_id": "ChIJUZ2cBpe3t4kR72bANuSUYYE",
-      "name": "Roti Mediterranean Bowls. Salads. Pitas.",
-      "rating": 4.2,
-      "user_ratings_total": 765,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8975255,
-        "lng": -77.0303101
-      },
-      "address": "1311 F Street Northwest, Washington"
-    },
-    {
-      "station": "Federal Triangle",
-      "distance_m": 225,
-      "place_id": "ChIJyWSXNZi3t4kRlfxuTee7Uuw",
-      "name": "California Tortilla",
-      "rating": 3.8,
-      "user_ratings_total": 86,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.89419100000001,
-        "lng": -77.03075199999999
-      },
-      "address": "1300 Pennsylvania Avenue Northwest, Washington"
-    },
-    {
-      "station": "Federal Triangle",
-      "distance_m": 325,
-      "place_id": "ChIJK0VcwJC3t4kRvF_cgZpz_bI",
-      "name": "&pizza - E Street",
-      "rating": 4.3,
-      "user_ratings_total": 1705,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.896305,
-        "lng": -77.0263681
-      },
-      "address": "1005 E Street Northwest, Washington"
-    },
-    {
-      "station": "Federal Triangle",
       "distance_m": 461,
       "place_id": "ChIJH8SJApe3t4kR62qR9vTHuwE",
       "name": "Mastro's Steakhouse",
@@ -1486,28 +1253,6 @@
         "lng": -77.0299369
       },
       "address": "600 13th Street Northwest, Washington"
-    },
-    {
-      "station": "Federal Triangle",
-      "distance_m": 487,
-      "place_id": "ChIJX28i25a3t4kRMRsRbwGuPRc",
-      "name": "Jimmy John's",
-      "rating": 3.8,
-      "user_ratings_total": 154,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.89812879999999,
-        "lng": -77.0285932
-      },
-      "address": "1208 G Street Northwest, Washington"
     },
     {
       "station": "Federal Triangle",
@@ -1968,28 +1713,6 @@
         "lng": -77.0221282
       },
       "address": "812 7th Street Northwest, Washington"
-    },
-    {
-      "station": "Gallery Pl-Chinatown",
-      "distance_m": 35,
-      "place_id": "ChIJD4OEHo63t4kR-jqq6XgQ3EU",
-      "name": "McDonald's",
-      "rating": 3.2,
-      "user_ratings_total": 940,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.898587,
-        "lng": -77.021605
-      },
-      "address": "601 F Street Northwest, Washington"
     },
     {
       "station": "Gallery Pl-Chinatown",
@@ -3442,28 +3165,6 @@
     },
     {
       "station": "Metro Center",
-      "distance_m": 180,
-      "place_id": "ChIJO3N1FJe3t4kRHZL4qzkdwjQ",
-      "name": "McDonald's",
-      "rating": 3.8,
-      "user_ratings_total": 1832,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.897163,
-        "lng": -77.029569
-      },
-      "address": "555 13th Street Northwest, Washington"
-    },
-    {
-      "station": "Metro Center",
       "distance_m": 213,
       "place_id": "ChIJpZW54ZC3t4kRokyobKJWtYU",
       "name": "Le Pain Quotidien",
@@ -3484,28 +3185,6 @@
         "lng": -77.0258142
       },
       "address": "975 F Street Northwest, Washington"
-    },
-    {
-      "station": "Metro Center",
-      "distance_m": 278,
-      "place_id": "ChIJzd4oJ5S3t4kRdOWbVWMM-6Y",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 2467,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.900598,
-        "lng": -77.02937299999999
-      },
-      "address": "1235 New York Avenue Northwest, Washington"
     },
     {
       "station": "Metro Center",
@@ -5704,27 +5383,6 @@
     },
     {
       "station": "Archives-Navy Memorial-Penn Quarter",
-      "distance_m": 237,
-      "place_id": "ChIJhzbrWUe3t4kRUjAdEhM34ag",
-      "name": "Gregorys Coffee",
-      "rating": 4,
-      "user_ratings_total": 481,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8960171,
-        "lng": -77.0217488
-      },
-      "address": "443 7th Street Northwest, Washington"
-    },
-    {
-      "station": "Archives-Navy Memorial-Penn Quarter",
       "distance_m": 125,
       "place_id": "ChIJvfdr_Y-3t4kRN-8elI5NN6g",
       "name": "Oyamel",
@@ -6961,29 +6619,6 @@
     },
     {
       "station": "Farragut North",
-      "distance_m": 315,
-      "place_id": "ChIJB1KTtLm3t4kRyx15Mf4crlg",
-      "name": "Wawa",
-      "rating": 3.4,
-      "user_ratings_total": 279,
-      "price_level": 1,
-      "types": [
-        "convenience_store",
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.90444,
-        "lng": -77.04303999999999
-      },
-      "address": "1111 19th Street Northwest, Washington"
-    },
-    {
-      "station": "Farragut North",
       "distance_m": 137,
       "place_id": "ChIJmdi4Kb-3t4kR_D5brQvWooE",
       "name": "Sunrise Cafe",
@@ -7026,50 +6661,6 @@
     },
     {
       "station": "Farragut North",
-      "distance_m": 117,
-      "place_id": "ChIJJaEe5Dy3t4kRtsUGWUb6phg",
-      "name": "Gregorys Coffee",
-      "rating": 4.3,
-      "user_ratings_total": 329,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9042394,
-        "lng": -77.0399281
-      },
-      "address": "1101 Connecticut Avenue Northwest, Washington"
-    },
-    {
-      "station": "Farragut North",
-      "distance_m": 132,
-      "place_id": "ChIJAQjMGn23t4kRsfrFGlToRVU",
-      "name": "JOE & THE JUICE",
-      "rating": 3.3,
-      "user_ratings_total": 201,
-      "price_level": 2,
-      "types": [
-        "meal_takeaway",
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9040454,
-        "lng": -77.03870239999999
-      },
-      "address": "1100 17th Street Northwest Street, Washington"
-    },
-    {
-      "station": "Farragut North",
       "distance_m": 258,
       "place_id": "ChIJl9AIx7i3t4kRDfDb9SanL-8",
       "name": "Oxford Cafe",
@@ -7108,27 +6699,6 @@
         "lng": -77.041493
       },
       "address": "1150 Connecticut Avenue Northwest, Washington"
-    },
-    {
-      "station": "Farragut North",
-      "distance_m": 339,
-      "place_id": "ChIJI47iwLm3t4kR3cKp83DgVm0",
-      "name": "Gregorys Coffee",
-      "rating": 4.3,
-      "user_ratings_total": 192,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.90349389999999,
-        "lng": -77.0436695
-      },
-      "address": "1900 L Street Northwest, Washington"
     },
     {
       "station": "Farragut North",
@@ -7827,28 +7397,6 @@
     },
     {
       "station": "Farragut West",
-      "distance_m": 187,
-      "place_id": "ChIJDUVgj7u3t4kR7jnqzpfyW2E",
-      "name": "McDonald's",
-      "rating": 3.8,
-      "user_ratings_total": 2040,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8996298,
-        "lng": -77.0397498
-      },
-      "address": "750 17th Street Northwest, Washington"
-    },
-    {
-      "station": "Farragut West",
       "distance_m": 158,
       "place_id": "ChIJw-5pUnTHt4kRCptEANPumA0",
       "name": "DC Sweet Potato Cake Bakery & Cafe",
@@ -8159,27 +7707,6 @@
         "lng": -77.03853099999999
       },
       "address": "800 Connecticut Avenue Northwest, Washington"
-    },
-    {
-      "station": "Farragut West",
-      "distance_m": 204,
-      "place_id": "ChIJw1iepbu3t4kR3CFj1D6lNuM",
-      "name": "Roti Mediterranean Bowls. Salads. Pitas.",
-      "rating": 4.3,
-      "user_ratings_total": 395,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8996717,
-        "lng": -77.0408628
-      },
-      "address": "1747 Pennsylvania Avenue Northwest, Washington"
     },
     {
       "station": "Farragut West",
@@ -8879,28 +8406,6 @@
         "lng": -77.0419706
       },
       "address": "1301 Connecticut Avenue Northwest, Washington"
-    },
-    {
-      "station": "Dupont Circle",
-      "distance_m": 460,
-      "place_id": "ChIJV9S5JLi3t4kR75GwLmBEaFU",
-      "name": "McDonald's",
-      "rating": 3.7,
-      "user_ratings_total": 1423,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9054121,
-        "lng": -77.0444115
-      },
-      "address": "1916 M Street Northwest, Washington"
     },
     {
       "station": "Dupont Circle",
@@ -10004,28 +9509,6 @@
         "lng": -77.0485218
       },
       "address": "2150 P Street Northwest, Washington"
-    },
-    {
-      "station": "Dupont Circle",
-      "distance_m": 543,
-      "place_id": "ChIJ7ZpZ6Oe3t4kRxd2lGfr4Gk4",
-      "name": "McDonald's",
-      "rating": 3.8,
-      "user_ratings_total": 811,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.912005,
-        "lng": -77.038232
-      },
-      "address": "1619 17th Street Northwest, Washington"
     },
     {
       "station": "Dupont Circle",
@@ -12222,26 +11705,6 @@
     },
     {
       "station": "Foggy Bottom-GWU",
-      "distance_m": 118,
-      "place_id": "ChIJnb8lXbG3t4kRyJWQTbTR1NU",
-      "name": "Devon & Blakely",
-      "rating": 4.3,
-      "user_ratings_total": 254,
-      "price_level": 2,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9016256,
-        "lng": -77.0499224
-      },
-      "address": "2200 Pennsylvania Avenue Northwest, Washington"
-    },
-    {
-      "station": "Foggy Bottom-GWU",
       "distance_m": 369,
       "place_id": "ChIJ3Sl-vba3t4kR69SFBTOnHT8",
       "name": "Ris",
@@ -12362,28 +11825,6 @@
     },
     {
       "station": "Foggy Bottom-GWU",
-      "distance_m": 439,
-      "place_id": "ChIJlWlFSLe3t4kRz6T5efpRbus",
-      "name": "Domino's Pizza",
-      "rating": 3,
-      "user_ratings_total": 383,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9028168,
-        "lng": -77.046082
-      },
-      "address": "2029 K Street Northwest, Washington"
-    },
-    {
-      "station": "Foggy Bottom-GWU",
       "distance_m": 369,
       "place_id": "ChIJ9WFC3La3t4kRHN7IQrqFvEw",
       "name": "Char Bar",
@@ -12401,26 +11842,6 @@
         "lng": -77.0482957
       },
       "address": "2142 L Street Northwest, Washington"
-    },
-    {
-      "station": "Foggy Bottom-GWU",
-      "distance_m": 387,
-      "place_id": "ChIJWaq-G663t4kRWK_-0qyPE7w",
-      "name": "&pizza - Hotel Hive",
-      "rating": 4.6,
-      "user_ratings_total": 1851,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8971548,
-        "lng": -77.0496323
-      },
-      "address": "2224 F Street Northwest, Washington"
     },
     {
       "station": "Foggy Bottom-GWU",
@@ -12933,28 +12354,6 @@
         "lng": -77.0523722
       },
       "address": "2331 Calvert Street Northwest, Washington"
-    },
-    {
-      "station": "Woodley Park-Zoo/Adams Morgan",
-      "distance_m": 92,
-      "place_id": "ChIJu-yDctS3t4kROm9YRVn68Z0",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 898,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.924242,
-        "lng": -77.052208
-      },
-      "address": "2616 Connecticut Avenue Northwest, Washington"
     },
     {
       "station": "Woodley Park-Zoo/Adams Morgan",
@@ -14624,28 +14023,6 @@
     },
     {
       "station": "Tenleytown-AU",
-      "distance_m": 570,
-      "place_id": "ChIJS6mhbMLJt4kRTdcSxToU2J4",
-      "name": "McDonald's",
-      "rating": 3.7,
-      "user_ratings_total": 1968,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9429773,
-        "lng": -77.0774167
-      },
-      "address": "4130 Wisconsin Avenue Northwest, Washington"
-    },
-    {
-      "station": "Tenleytown-AU",
       "distance_m": 68,
       "place_id": "ChIJYfhSC-rJt4kRatMDLKDKGSA",
       "name": "Guapo's Restaurant",
@@ -14784,28 +14161,6 @@
         "lng": -77.079729
       },
       "address": "4529 Wisconsin Avenue Northwest, Washington"
-    },
-    {
-      "station": "Tenleytown-AU",
-      "distance_m": 141,
-      "place_id": "ChIJcxMTcOrJt4kRLTEUp4vaAkQ",
-      "name": "Domino's Pizza",
-      "rating": 3,
-      "user_ratings_total": 202,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9490319,
-        "lng": -77.0800191
-      },
-      "address": "4539 Wisconsin Avenue Northwest, Washington"
     },
     {
       "station": "Tenleytown-AU",
@@ -16063,29 +15418,6 @@
     },
     {
       "station": "Bethesda",
-      "distance_m": 295,
-      "place_id": "ChIJh99RmXvJt4kRrQpGrVxIg-c",
-      "name": "JOE & THE JUICE",
-      "rating": 3.9,
-      "user_ratings_total": 248,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9818254,
-        "lng": -77.0957241
-      },
-      "address": "7263 Woodmont Avenue Mall, Bethesda"
-    },
-    {
-      "station": "Bethesda",
       "distance_m": 395,
       "place_id": "ChIJi-fG9HvJt4kRDODgQlf-R9M",
       "name": "Quartermaine Coffee Roasters",
@@ -16516,26 +15848,6 @@
         "lng": -77.0959264
       },
       "address": "7831 Woodmont Avenue, Bethesda"
-    },
-    {
-      "station": "Bethesda",
-      "distance_m": 233,
-      "place_id": "ChIJ1eVopGTJt4kRPQeCpBbZRkM",
-      "name": "&pizza",
-      "rating": 4.4,
-      "user_ratings_total": 789,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9857974,
-        "lng": -77.0962863
-      },
-      "address": "7614 Old Georgetown Road, Bethesda"
     },
     {
       "station": "Bethesda",
@@ -17125,26 +16437,6 @@
         "lng": -77.09301119999999
       },
       "address": "8901 Rockville Pike #1, Bethesda"
-    },
-    {
-      "station": "Medical Center",
-      "distance_m": 340,
-      "place_id": "ChIJS3Kt10TJt4kRt0G50OljBGQ",
-      "name": "Wendy's",
-      "rating": 3.4,
-      "user_ratings_total": 193,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.997862,
-        "lng": -77.0943723
-      },
-      "address": "8901 Wisconsin Avenue Building 31, Bethesda"
     }
   ],
   "Grosvenor-Strathmore": [
@@ -17525,26 +16817,6 @@
         "lng": -77.1132286
       },
       "address": "Metro Pike Shopping Center, 11510 Rockville Pike, Rockville"
-    },
-    {
-      "station": "North Bethesda",
-      "distance_m": 304,
-      "place_id": "ChIJTRKVbzDMt4kR7atE0hqGQTA",
-      "name": "&pizza",
-      "rating": 4.2,
-      "user_ratings_total": 1045,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.04936899999999,
-        "lng": -77.116209
-      },
-      "address": "11626 Old Georgetown Road, North Bethesda"
     },
     {
       "station": "North Bethesda",
@@ -20237,26 +19509,6 @@
   "Shady Grove": [
     {
       "station": "Shady Grove",
-      "distance_m": 539,
-      "place_id": "ChIJbZwpDZrSt4kRUiANyaokt-c",
-      "name": "Wendy's",
-      "rating": 3.7,
-      "user_ratings_total": 992,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.1149855,
-        "lng": -77.1644298
-      },
-      "address": "15807 Frederick Road, Rockville"
-    },
-    {
-      "station": "Shady Grove",
       "distance_m": 328,
       "place_id": "ChIJTRMoTqnTt4kRwUlzCa_D0dY",
       "name": "Costa Grande Restaurant",
@@ -21458,28 +20710,6 @@
     {
       "station": "Union Station",
       "distance_m": 156,
-      "place_id": "ChIJ47kWxia4t4kRTDT7hIQ-7PU",
-      "name": "McDonald's",
-      "rating": 3.3,
-      "user_ratings_total": 509,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8979438,
-        "lng": -77.0049635
-      },
-      "address": "50 Massachusetts Avenue Northeast, Washington"
-    },
-    {
-      "station": "Union Station",
-      "distance_m": 156,
       "place_id": "ChIJt53gTCG4t4kRD24ETVyDDvA",
       "name": "Einstein Bros. Bagels",
       "rating": 3.1,
@@ -21499,27 +20729,6 @@
         "lng": -77.0049635
       },
       "address": "50 Massachusetts Avenue Northeast, Washington"
-    },
-    {
-      "station": "Union Station",
-      "distance_m": 65,
-      "place_id": "ChIJcVM301a5t4kRptS-iDRstak",
-      "name": "Blue Bottle Coffee",
-      "rating": 3.9,
-      "user_ratings_total": 348,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8973447,
-        "lng": -77.006174
-      },
-      "address": "50 Massachusetts Avenue Northeast Unit M160, Washington"
     },
     {
       "station": "Union Station",
@@ -21620,27 +20829,6 @@
         "lng": -77.0051708
       },
       "address": "107 D Street Northeast, Washington"
-    },
-    {
-      "station": "Union Station",
-      "distance_m": 61,
-      "place_id": "ChIJ47kWxia4t4kR2NBL3m6pPbQ",
-      "name": "Taco Bell",
-      "rating": 3.5,
-      "user_ratings_total": 261,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.898043,
-        "lng": -77.00617199999999
-      },
-      "address": "50 Massachusetts Avenue Northeast, Washington"
     },
     {
       "station": "Union Station",
@@ -22391,28 +21579,6 @@
     },
     {
       "station": "Rhode Island Ave-Brentwood",
-      "distance_m": 297,
-      "place_id": "ChIJr0r6zQe4t4kRc8U_XIvqdow",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 1828,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.92051600000001,
-        "lng": -76.999408
-      },
-      "address": "424 Rhode Island Avenue Northeast, Washington"
-    },
-    {
-      "station": "Rhode Island Ave-Brentwood",
       "distance_m": 187,
       "place_id": "ChIJ2XRrHz-5t4kREdgiEaawxaM",
       "name": "Jaliyaa Coffee Truck & Catering",
@@ -22430,28 +21596,6 @@
         "lng": -76.99657300000001
       },
       "address": "670 Rhode Island Avenue Northeast, Washington"
-    },
-    {
-      "station": "Rhode Island Ave-Brentwood",
-      "distance_m": 586,
-      "place_id": "ChIJLT7NoA64t4kR9BBRZljhfA4",
-      "name": "McDonald's",
-      "rating": 3.8,
-      "user_ratings_total": 1233,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.91591149999999,
-        "lng": -76.9932631
-      },
-      "address": "1901 9th Street Northeast, Washington"
     },
     {
       "station": "Rhode Island Ave-Brentwood",
@@ -23241,26 +22385,6 @@
         "lng": -76.9939266
       },
       "address": "3738 10th Street Northeast, Washington"
-    },
-    {
-      "station": "Brookland-CUA",
-      "distance_m": 200,
-      "place_id": "ChIJ2TgNJvDHt4kR7TkxDJFy-Dg",
-      "name": "&pizza",
-      "rating": 4.2,
-      "user_ratings_total": 810,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9325821,
-        "lng": -76.9966963
-      },
-      "address": "666 Monroe Street Northeast, Washington"
     },
     {
       "station": "Brookland-CUA",
@@ -24820,28 +23944,6 @@
     },
     {
       "station": "Silver Spring",
-      "distance_m": 170,
-      "place_id": "ChIJk1kQBLnIt4kRptsQCvPoJqM",
-      "name": "McDonald's",
-      "rating": 3.5,
-      "user_ratings_total": 1802,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "store",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.99510950000001,
-        "lng": -77.0302172
-      },
-      "address": "8407 Colesville Road, Silver Spring"
-    },
-    {
-      "station": "Silver Spring",
       "distance_m": 576,
       "place_id": "ChIJMQNcBbrIt4kR6v5LkfE2AK8",
       "name": "Kung Fu Tea",
@@ -25919,28 +25021,6 @@
   "Forest Glen": [
     {
       "station": "Forest Glen",
-      "distance_m": 592,
-      "place_id": "ChIJW52ANTPPt4kRbgRv1iad3HI",
-      "name": "Domino's Pizza",
-      "rating": 3.2,
-      "user_ratings_total": 327,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.0101379,
-        "lng": -77.0419921
-      },
-      "address": "9450 Georgia Avenue, Silver Spring"
-    },
-    {
-      "station": "Forest Glen",
       "distance_m": 515,
       "place_id": "ChIJIXsO-bvIt4kRgi731An-Fzw",
       "name": "Brahma Kumaris Meditation Museums",
@@ -26145,28 +25225,6 @@
     },
     {
       "station": "Wheaton",
-      "distance_m": 552,
-      "place_id": "ChIJf-Wz7e7ScEARZBflSyl2LeQ",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 1509,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "store",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.0396217,
-        "lng": -77.05734369999999
-      },
-      "address": "2741 University Boulevard West, Kensington"
-    },
-    {
-      "station": "Wheaton",
       "distance_m": 297,
       "place_id": "ChIJXfoQzh3Pt4kRuvBQEXndshg",
       "name": "Bourbon Street Cafe",
@@ -26184,28 +25242,6 @@
         "lng": -77.0537817
       },
       "address": "11160 Veirs Mill Road #101, Wheaton"
-    },
-    {
-      "station": "Wheaton",
-      "distance_m": 333,
-      "place_id": "ChIJXfoQzh3Pt4kRua-qvuBMDlI",
-      "name": "McDonald's",
-      "rating": 3.1,
-      "user_ratings_total": 164,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "store",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.0377973,
-        "lng": -77.0548273
-      },
-      "address": "11160 Veirs Mill Rd (Wheaton Mall, Wheaton-Glenmont"
     },
     {
       "station": "Wheaton",
@@ -26524,26 +25560,6 @@
     },
     {
       "station": "Wheaton",
-      "distance_m": 284,
-      "place_id": "ChIJs_vc3x3Pt4kRi4fXByl1UuE",
-      "name": "Taco Bell (Mall Food Court)",
-      "rating": 3.7,
-      "user_ratings_total": 93,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.03711029999999,
-        "lng": -77.0538077
-      },
-      "address": "11160 Veirs Mill Road, Wheaton"
-    },
-    {
-      "station": "Wheaton",
       "distance_m": 302,
       "place_id": "ChIJzTSFSxvPt4kRYV5nIiu61nk",
       "name": "Pupuseria La Familiar",
@@ -26663,26 +25679,6 @@
         "lng": -77.0516365
       },
       "address": "11220 Triangle Lane, Wheaton"
-    },
-    {
-      "station": "Wheaton",
-      "distance_m": 181,
-      "place_id": "ChIJp-mlEBzPt4kRVS7hCaUR6Sk",
-      "name": "Wendy's",
-      "rating": 3.6,
-      "user_ratings_total": 762,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.036995,
-        "lng": -77.0517021
-      },
-      "address": "11030 Veirs Mill Road, Wheaton"
     },
     {
       "station": "Wheaton",
@@ -27409,50 +26405,6 @@
         "lng": -77.05123999999999
       },
       "address": "12510 Layhill Road, Silver Spring"
-    },
-    {
-      "station": "Glenmont",
-      "distance_m": 435,
-      "place_id": "ChIJvc0Giq7Pt4kRI3sfoFIEYeA",
-      "name": "McDonald's",
-      "rating": 3.7,
-      "user_ratings_total": 888,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.0591396,
-        "lng": -77.0496216
-      },
-      "address": "12313 Georgia Avenue, Silver Spring"
-    },
-    {
-      "station": "Glenmont",
-      "distance_m": 448,
-      "place_id": "ChIJhf6hd67Pt4kRRVXz-9-J6d0",
-      "name": "Pizza Hut",
-      "rating": 3.8,
-      "user_ratings_total": 320,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 39.0603453,
-        "lng": -77.0485332
-      },
-      "address": "12335-a Georgia Avenue, Silver Spring"
     },
     {
       "station": "Glenmont",
@@ -28205,28 +27157,6 @@
     },
     {
       "station": "NoMa-Gallaudet U",
-      "distance_m": 296,
-      "place_id": "ChIJDZbhJhy4t4kRI2PQrKP_doU",
-      "name": "McDonald's",
-      "rating": 3.3,
-      "user_ratings_total": 2566,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.907985,
-        "lng": -77.0063021
-      },
-      "address": "75 New York Avenue Northeast, Washington"
-    },
-    {
-      "station": "NoMa-Gallaudet U",
       "distance_m": 287,
       "place_id": "ChIJXaaC1B64t4kRNCB8uidsRzc",
       "name": "Uptown Cafe",
@@ -28313,27 +27243,6 @@
         "lng": -77.00265569999999
       },
       "address": "201 M Street Northeast, Washington"
-    },
-    {
-      "station": "NoMa-Gallaudet U",
-      "distance_m": 262,
-      "place_id": "ChIJfdCyFxq4t4kRWNHEIWFdRE4",
-      "name": "Blue Bottle Coffee",
-      "rating": 4.3,
-      "user_ratings_total": 307,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9080849,
-        "lng": -77.000057
-      },
-      "address": "1250 4th Street Northeast, Washington"
     },
     {
       "station": "NoMa-Gallaudet U",
@@ -28436,27 +27345,6 @@
         "lng": -76.9971571
       },
       "address": "1325 5th Street Northeast Suite G2, Washington"
-    },
-    {
-      "station": "NoMa-Gallaudet U",
-      "distance_m": 244,
-      "place_id": "ChIJ7UuNvh64t4kRlo9C4ql7uhs",
-      "name": "Roti Mediterranean Bowls. Salads. Pitas.",
-      "rating": 4.1,
-      "user_ratings_total": 428,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.90671869999999,
-        "lng": -77.00564349999999
-      },
-      "address": "1275 First Street Northeast, Washington"
     },
     {
       "station": "NoMa-Gallaudet U",
@@ -29403,28 +28291,6 @@
     },
     {
       "station": "Rosslyn",
-      "distance_m": 35,
-      "place_id": "ChIJBYvrsVu2t4kRt-AvZsKDp1I",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 906,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8963037,
-        "lng": -77.0713184
-      },
-      "address": "1800 North Lynn Street, Arlington"
-    },
-    {
-      "station": "Rosslyn",
       "distance_m": 41,
       "place_id": "ChIJJyCFQIe3t4kRm6eoteFI9BU",
       "name": "Roll Play - Rosslyn",
@@ -30362,28 +29228,6 @@
         "lng": -77.06280699999999
       },
       "address": "1301 South Joyce Street Suite D - 4, Arlington"
-    },
-    {
-      "station": "Pentagon City",
-      "distance_m": 121,
-      "place_id": "ChIJ1afWyd62t4kR-07QTdByWog",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 633,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8632632,
-        "lng": -77.0608809
-      },
-      "address": "Fashion Centre Mall, 1100 South Hayes Street, Arlington"
     },
     {
       "station": "Pentagon City",
@@ -33432,26 +32276,6 @@
     },
     {
       "station": "Potomac Yard",
-      "distance_m": 558,
-      "place_id": "ChIJ7ztMYmext4kRcX9F_6c07Ss",
-      "name": "&pizza",
-      "rating": 4.5,
-      "user_ratings_total": 967,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8367118,
-        "lng": -77.0510403
-      },
-      "address": "3525 Richmond Highway, Alexandria"
-    },
-    {
-      "station": "Potomac Yard",
       "distance_m": 458,
       "place_id": "ChIJA3HqvNCwt4kRge_WGVXZjuQ",
       "name": "Potomac Yard Center",
@@ -33668,28 +32492,6 @@
     },
     {
       "station": "Braddock Road",
-      "distance_m": 428,
-      "place_id": "ChIJsWqTu-Swt4kRhjP3bBPlN_I",
-      "name": "McDonald's",
-      "rating": 3.8,
-      "user_ratings_total": 1629,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8162569,
-        "lng": -77.0497553
-      },
-      "address": "1000 North Henry Street, Alexandria"
-    },
-    {
-      "station": "Braddock Road",
       "distance_m": 159,
       "place_id": "ChIJ-QTZM2Wxt4kR3gZaZpHrV58",
       "name": "Spill The Tea",
@@ -33877,28 +32679,6 @@
         "lng": -77.057462
       },
       "address": "1310 Mount Vernon Avenue, Alexandria"
-    },
-    {
-      "station": "Braddock Road",
-      "distance_m": 492,
-      "place_id": "ChIJFQhM_vuwt4kRv-KBTnvSh9U",
-      "name": "Domino's Pizza",
-      "rating": 3.3,
-      "user_ratings_total": 261,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8103528,
-        "lng": -77.0505556
-      },
-      "address": "500 North Henry Street, Alexandria"
     },
     {
       "station": "Braddock Road",
@@ -34493,28 +33273,6 @@
     },
     {
       "station": "King St-Old Town",
-      "distance_m": 341,
-      "place_id": "ChIJbeL4y6uxt4kRZsDgWLpZA7M",
-      "name": "Jimmy John's",
-      "rating": 3.5,
-      "user_ratings_total": 210,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8034049,
-        "lng": -77.0610841
-      },
-      "address": "330 John Carlyle Street UNIT 140, Alexandria"
-    },
-    {
-      "station": "King St-Old Town",
       "distance_m": 105,
       "place_id": "ChIJOXkTF6qxt4kR4hZ8n3SVr9Q",
       "name": "Caprese",
@@ -35085,26 +33843,6 @@
         "lng": -77.0708502
       },
       "address": "210 Hoffman Street, Alexandria"
-    },
-    {
-      "station": "Eisenhower Avenue",
-      "distance_m": 235,
-      "place_id": "ChIJDZxNEk2xt4kRyF_DodV1pnI",
-      "name": "&pizza",
-      "rating": 4.5,
-      "user_ratings_total": 389,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.802423,
-        "lng": -77.0712952
-      },
-      "address": "207 Hoffman Street, Alexandria"
     },
     {
       "station": "Eisenhower Avenue",
@@ -36342,26 +35080,6 @@
     },
     {
       "station": "L'Enfant Plaza",
-      "distance_m": 270,
-      "place_id": "ChIJ_96H2ne3t4kRx1J2kZ53ctU",
-      "name": "California Tortilla",
-      "rating": 3.6,
-      "user_ratings_total": 172,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.88394640000001,
-        "lng": -77.0248991
-      },
-      "address": "429 L'Enfant Plaza Southwest Suite 335, Washington"
-    },
-    {
-      "station": "L'Enfant Plaza",
       "distance_m": 238,
       "place_id": "ChIJtQnl_223t4kRktFdOL587RY",
       "name": "Bop Bop",
@@ -37005,28 +35723,6 @@
         "lng": -77.01651509999999
       },
       "address": "355 E Street Southwest, Washington"
-    },
-    {
-      "station": "Federal Center SW",
-      "distance_m": 213,
-      "place_id": "ChIJR-ZrCo-3t4kRqAmsNc4bR-s",
-      "name": "McDonald's",
-      "rating": 3.8,
-      "user_ratings_total": 3075,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.885898,
-        "lng": -77.01800899999999
-      },
-      "address": "400 C Street Southwest, Washington"
     },
     {
       "station": "Federal Center SW",
@@ -38899,26 +37595,6 @@
     },
     {
       "station": "Eastern Market",
-      "distance_m": 70,
-      "place_id": "ChIJy6OECDO4t4kR7XZMu_ndJZM",
-      "name": "&pizza",
-      "rating": 4.4,
-      "user_ratings_total": 797,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8834969,
-        "lng": -76.995241
-      },
-      "address": "405 8th Street Southeast, Washington"
-    },
-    {
-      "station": "Eastern Market",
       "distance_m": 186,
       "place_id": "ChIJZamGfTO4t4kRnjETn_wWEqM",
       "name": "Little Pearl",
@@ -40287,27 +38963,6 @@
     },
     {
       "station": "Navy Yard-Ballpark",
-      "distance_m": 68,
-      "place_id": "ChIJ0_ih3ZW5t4kRf2VEoF5EZjk",
-      "name": "Gregorys Coffee",
-      "rating": 4.2,
-      "user_ratings_total": 244,
-      "price_level": 2,
-      "types": [
-        "cafe",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.87698839999999,
-        "lng": -77.0044963
-      },
-      "address": "1111 New Jersey Avenue Southeast, Washington"
-    },
-    {
-      "station": "Navy Yard-Ballpark",
       "distance_m": 100,
       "place_id": "ChIJrRTOIPa3t4kR0mhP6xFKuLE",
       "name": "For Five Coffee @ 80M",
@@ -40782,26 +39437,6 @@
     },
     {
       "station": "Navy Yard-Ballpark",
-      "distance_m": 192,
-      "place_id": "ChIJ5d8RyZm5t4kR5UTqcBmNLTk",
-      "name": "&pizza",
-      "rating": 4.3,
-      "user_ratings_total": 450,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.87615329999999,
-        "lng": -77.00723180000001
-      },
-      "address": "1210 Half Street Southeast, Washington"
-    },
-    {
-      "station": "Navy Yard-Ballpark",
       "distance_m": 232,
       "place_id": "ChIJd_WREfa5t4kRJnIZxVIq0fg",
       "name": "Earlybird DC",
@@ -41187,28 +39822,6 @@
         "lng": -76.98525169999999
       },
       "address": "1401 Pennsylvania Avenue Southeast, Washington"
-    },
-    {
-      "station": "Potomac Ave",
-      "distance_m": 391,
-      "place_id": "ChIJ9RuBo7S5t4kRDugWX2cpj3Q",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 1962,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8786247,
-        "lng": -76.9822204
-      },
-      "address": "1539 Pennsylvania Avenue Southeast, Washington"
     },
     {
       "station": "Potomac Ave",
@@ -41817,28 +40430,6 @@
         "lng": -76.9472766
       },
       "address": "4058 C, 4058 Minnesota Avenue Northeast, Washington"
-    },
-    {
-      "station": "Minnesota Ave",
-      "distance_m": 564,
-      "place_id": "ChIJ9WhFre24t4kRVBYZ9HobYUU",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 1542,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.893414,
-        "lng": -76.949879
-      },
-      "address": "3901 Minnesota Avenue Northeast, Washington"
     },
     {
       "station": "Minnesota Ave",
@@ -45340,28 +43931,6 @@
     },
     {
       "station": "U Street/African-Amer Civil War Memorial/Cardozo",
-      "distance_m": 284,
-      "place_id": "ChIJ7ZpZ6Oe3t4kR0JWwKrbK_2k",
-      "name": "McDonald's",
-      "rating": 3.4,
-      "user_ratings_total": 1126,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.916859,
-        "lng": -77.032181
-      },
-      "address": "1944 14th Street Northwest, Washington"
-    },
-    {
-      "station": "U Street/African-Amer Civil War Memorial/Cardozo",
       "distance_m": 40,
       "place_id": "ChIJg0un9iy3t4kRDp6s_KkhsGY",
       "name": "Brew on U",
@@ -45710,26 +44279,6 @@
         "lng": -77.0313084
       },
       "address": "1344 U Street Northwest, Washington"
-    },
-    {
-      "station": "U Street/African-Amer Civil War Memorial/Cardozo",
-      "distance_m": 41,
-      "place_id": "ChIJiVgVPua3t4kRGgBT49ZzMOY",
-      "name": "&pizza - U Street",
-      "rating": 4.2,
-      "user_ratings_total": 1173,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9167693,
-        "lng": -77.0292377
-      },
-      "address": "1250 U Street Northwest, Washington"
     },
     {
       "station": "U Street/African-Amer Civil War Memorial/Cardozo",
@@ -46639,28 +45188,6 @@
     },
     {
       "station": "Columbia Heights",
-      "distance_m": 394,
-      "place_id": "ChIJoxUp5-e3t4kR6LQ1sddDy6Q",
-      "name": "Domino's Pizza",
-      "rating": 3.3,
-      "user_ratings_total": 381,
-      "price_level": 1,
-      "types": [
-        "meal_delivery",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.92518769999999,
-        "lng": -77.0319478
-      },
-      "address": "2701 14th Street Northwest, Washington"
-    },
-    {
-      "station": "Columbia Heights",
       "distance_m": 243,
       "place_id": "ChIJ5XBM5iHIt4kRnqxBV-KJ6Xo",
       "name": "Pho 14",
@@ -46987,27 +45514,6 @@
         "lng": -77.0335462
       },
       "address": "1400 Irving Street Northwest STE 109, Washington"
-    },
-    {
-      "station": "Columbia Heights",
-      "distance_m": 110,
-      "place_id": "ChIJzTEDfx_It4kRGTwuz_FJU4w",
-      "name": "Pizza Hut Express",
-      "rating": 3.3,
-      "user_ratings_total": 17,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9296176,
-        "lng": -77.0331309
-      },
-      "address": "3100 14th Street Northwest Suite #201, Washington"
     },
     {
       "station": "Columbia Heights",
@@ -47930,26 +46436,6 @@
     },
     {
       "station": "Georgia Ave-Petworth",
-      "distance_m": 315,
-      "place_id": "ChIJ34LmBBHIt4kRWRq-QzlZTUA",
-      "name": "Wendy's",
-      "rating": 3.2,
-      "user_ratings_total": 1501,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.93889,
-        "lng": -77.02514250000002
-      },
-      "address": "3900 Georgia Avenue Northwest, Washington"
-    },
-    {
-      "station": "Georgia Ave-Petworth",
       "distance_m": 62,
       "place_id": "ChIJPc5QYhDIt4kRh_7jjejBq6s",
       "name": "Pantry",
@@ -48271,26 +46757,6 @@
         "lng": -77.0247344
       },
       "address": "3937 Georgia Avenue Northwest, Washington"
-    },
-    {
-      "station": "Georgia Ave-Petworth",
-      "distance_m": 496,
-      "place_id": "ChIJoUtnHhvIt4kR0AdWEzUZyzM",
-      "name": "Mister Rotisserie",
-      "rating": 3.5,
-      "user_ratings_total": 107,
-      "price_level": 2,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9316646,
-        "lng": -77.0238758
-      },
-      "address": "3322 Georgia Avenue Northwest, Washington"
     },
     {
       "station": "Georgia Ave-Petworth",
@@ -49068,28 +47534,6 @@
     },
     {
       "station": "Hyattsville Crossing",
-      "distance_m": 335,
-      "place_id": "ChIJIzvPPfrGt4kRzret1f4a6PE",
-      "name": "McDonald's",
-      "rating": 4,
-      "user_ratings_total": 501,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9681083,
-        "lng": -76.9575168
-      },
-      "address": "Prince George's, 3500 East-West Highway, Hyattsville"
-    },
-    {
-      "station": "Hyattsville Crossing",
       "distance_m": 243,
       "place_id": "ChIJ53U1MPvGt4kRlCA3H2fO3F8",
       "name": "Wingstop",
@@ -49252,26 +47696,6 @@
     },
     {
       "station": "Hyattsville Crossing",
-      "distance_m": 308,
-      "place_id": "ChIJxznsqMHHt4kRuGg_wS0VLmw",
-      "name": "&pizza - Mall at Prince George's",
-      "rating": 4.4,
-      "user_ratings_total": 654,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9679803,
-        "lng": -76.95695549999999
-      },
-      "address": "3500 East-West Highway Unit 1250, Hyattsville"
-    },
-    {
-      "station": "Hyattsville Crossing",
       "distance_m": 330,
       "place_id": "ChIJx2Tfg6THt4kRtEN6Tr-0vgk",
       "name": "Suki Hana",
@@ -49328,27 +47752,6 @@
         "lng": -76.95549799999999
       },
       "address": "3500 East-West Highway, Hyattsville"
-    },
-    {
-      "station": "Hyattsville Crossing",
-      "distance_m": 392,
-      "place_id": "ChIJmYGchPrGt4kR45EkJvvQKbA",
-      "name": "Pizza Hut Express",
-      "rating": 3.1,
-      "user_ratings_total": 15,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.96870699999999,
-        "lng": -76.955123
-      },
-      "address": "3500 East-West Highway Suite 1200, Hyattsville"
     },
     {
       "station": "Hyattsville Crossing",
@@ -51647,27 +50050,6 @@
     },
     {
       "station": "Addison Road-Seat Pleasant",
-      "distance_m": 524,
-      "place_id": "ChIJ3ybpvj6_t4kR5zzehIJEWSM",
-      "name": "Taco Bell",
-      "rating": 3.6,
-      "user_ratings_total": 916,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8870576,
-        "lng": -76.8996346
-      },
-      "address": "6250 Central Avenue, Capitol Heights"
-    },
-    {
-      "station": "Addison Road-Seat Pleasant",
       "distance_m": 537,
       "place_id": "ChIJ55OwsT6_t4kRnXuLa5JFiWc",
       "name": "China Sky",
@@ -51746,28 +50128,6 @@
     }
   ],
   "Morgan Boulevard": [
-    {
-      "station": "Morgan Boulevard",
-      "distance_m": 574,
-      "place_id": "ChIJ_wq_AJS_t4kRPrKDEvG5O_k",
-      "name": "McDonald's",
-      "rating": 3.7,
-      "user_ratings_total": 1233,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "store",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.88928769999999,
-        "lng": -76.8620957
-      },
-      "address": "20 Ritchie Road, Capitol Heights"
-    },
     {
       "station": "Morgan Boulevard",
       "distance_m": 308,
@@ -55274,26 +53634,6 @@
     },
     {
       "station": "Virginia Square-GMU",
-      "distance_m": 481,
-      "place_id": "ChIJi43flSa0t4kRFeukNElb3mQ",
-      "name": "&pizza",
-      "rating": 4.4,
-      "user_ratings_total": 994,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.87966,
-        "lng": -77.10725
-      },
-      "address": "3924 Wilson Boulevard, Arlington"
-    },
-    {
-      "station": "Virginia Square-GMU",
       "distance_m": 526,
       "place_id": "ChIJDTLhTaW1t4kRUjTicUbopUk",
       "name": "Turkish Coffee Truck",
@@ -56177,28 +54517,6 @@
         "lng": -77.1137278
       },
       "address": "4401 Wilson Boulevard, Arlington"
-    },
-    {
-      "station": "Ballston-MU",
-      "distance_m": 566,
-      "place_id": "ChIJWfxzViG0t4kRGVVWhm9hC9w",
-      "name": "Jimmy John's",
-      "rating": 3.6,
-      "user_ratings_total": 194,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.87794679999999,
-        "lng": -77.1080197
-      },
-      "address": "550 North Quincy Street Unit B, Arlington"
     },
     {
       "station": "Ballston-MU",
@@ -57233,28 +55551,6 @@
         "lng": -77.2332258
       },
       "address": "2677 Prosperity Avenue, Fairfax"
-    },
-    {
-      "station": "Dunn Loring-Merrifield",
-      "distance_m": 498,
-      "place_id": "ChIJlSi5zW9LtokRh8huQxOzExY",
-      "name": "Jimmy John's",
-      "rating": 3.7,
-      "user_ratings_total": 161,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "meal_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.8785819,
-        "lng": -77.2281582
-      },
-      "address": "2750 Gallows Road, Vienna"
     },
     {
       "station": "Dunn Loring-Merrifield",
@@ -58475,28 +56771,6 @@
     },
     {
       "station": "Tysons",
-      "distance_m": 334,
-      "place_id": "ChIJ6-_lu-9KtokRkQDYlPXgI38",
-      "name": "McDonald's",
-      "rating": 3.4,
-      "user_ratings_total": 348,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9176071,
-        "lng": -77.2210721
-      },
-      "address": "1961 Chain Bridge Rd, Tysons Corner Center, Tysons"
-    },
-    {
-      "station": "Tysons",
       "distance_m": 388,
       "place_id": "ChIJNTBPMexKtokRWVByXCaYC40",
       "name": "PAUL",
@@ -58957,26 +57231,6 @@
     },
     {
       "station": "Tysons",
-      "distance_m": 334,
-      "place_id": "ChIJDaqEu-hKtokRfwlVmMjlzkg",
-      "name": "&pizza",
-      "rating": 4.7,
-      "user_ratings_total": 949,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9170754,
-        "lng": -77.2237711
-      },
-      "address": "1961 Chain Bridge Road, McLean"
-    },
-    {
-      "station": "Tysons",
       "distance_m": 365,
       "place_id": "ChIJi-knJ-ZKtokR-5FKXuVKarc",
       "name": "Marketplace Cafe at Nordstrom",
@@ -59014,26 +57268,6 @@
         "lng": -77.22146800000002
       },
       "address": "1775 Tysons Boulevard Suite 50, Tysons"
-    },
-    {
-      "station": "Tysons",
-      "distance_m": 381,
-      "place_id": "ChIJ70CppuhKtokRO7kuyHKh3Zs",
-      "name": "California Tortilla",
-      "rating": 3.1,
-      "user_ratings_total": 71,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9181797,
-        "lng": -77.21962510000002
-      },
-      "address": "1961 Chain Bridge Road, Tysons"
     },
     {
       "station": "Tysons",
@@ -59718,28 +57952,6 @@
     },
     {
       "station": "Greensboro",
-      "distance_m": 505,
-      "place_id": "ChIJtYT89_hKtokR0qQFCNS19qk",
-      "name": "McDonald's",
-      "rating": 3.7,
-      "user_ratings_total": 998,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.91572289999999,
-        "lng": -77.2378951
-      },
-      "address": "2089 Chain Bridge Road, Vienna"
-    },
-    {
-      "station": "Greensboro",
       "distance_m": 431,
       "place_id": "ChIJZ34nubtLtokRvOAB_YBel1E",
       "name": "Paris Baguette",
@@ -59867,26 +58079,6 @@
     },
     {
       "station": "Greensboro",
-      "distance_m": 119,
-      "place_id": "ChIJQ18w8vBKtokRaSreLORW8_4",
-      "name": "Wendy's",
-      "rating": 3.5,
-      "user_ratings_total": 528,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9200841,
-        "lng": -77.23388369999999
-      },
-      "address": "8301 Leesburg Pike, Vienna"
-    },
-    {
-      "station": "Greensboro",
       "distance_m": 226,
       "place_id": "ChIJpx4s5vZKtokR6Zpj901Zyqs",
       "name": "Pho 7 Plus",
@@ -59967,27 +58159,6 @@
         "lng": -77.23655000000001
       },
       "address": "8415 Old Courthouse Road, Vienna"
-    },
-    {
-      "station": "Greensboro",
-      "distance_m": 490,
-      "place_id": "ChIJpVwWBPlKtokRpTG229-E1Yg",
-      "name": "Taco Bell",
-      "rating": 3.8,
-      "user_ratings_total": 1173,
-      "price_level": 1,
-      "types": [
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9155794,
-        "lng": -77.23702519999999
-      },
-      "address": "8419 Old Courthouse Road, Vienna"
     },
     {
       "station": "Greensboro",
@@ -60626,28 +58797,6 @@
         "lng": -77.2425818
       },
       "address": "1577 Spring Hill Road, Vienna"
-    },
-    {
-      "station": "Spring Hill",
-      "distance_m": 361,
-      "place_id": "ChIJbzz3InVKtokRKoaIWmhXHwI",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 1387,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "store",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9271613,
-        "lng": -77.2388247
-      },
-      "address": "8516 Leesburg Pike, Vienna"
     },
     {
       "station": "Spring Hill",
@@ -61311,28 +59460,6 @@
     },
     {
       "station": "Wiehle-Reston East",
-      "distance_m": 592,
-      "place_id": "ChIJP7FQCS1ItokRRijqFK8yuS8",
-      "name": "McDonald's",
-      "rating": 3.6,
-      "user_ratings_total": 1638,
-      "price_level": 1,
-      "types": [
-        "cafe",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "store",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.9511063,
-        "lng": -77.33486669999999
-      },
-      "address": "11265 Roger Bacon Drive, Reston"
-    },
-    {
-      "station": "Wiehle-Reston East",
       "distance_m": 224,
       "place_id": "ChIJW5Iq1zRJtokRUldy0QUTxmk",
       "name": "Cosmos Cafe",
@@ -61979,26 +60106,6 @@
         "lng": -77.3581384
       },
       "address": "11915 Democracy Drive, Reston"
-    },
-    {
-      "station": "Reston Town Center",
-      "distance_m": 599,
-      "place_id": "ChIJ-a91kuJJtokRzQlIeXpPuxc",
-      "name": "&pizza",
-      "rating": 4.5,
-      "user_ratings_total": 652,
-      "price_level": 1,
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "location": {
-        "lat": 38.958056,
-        "lng": -77.3588738
-      },
-      "address": "1826 Library Street, Reston"
     },
     {
       "station": "Reston Town Center",
