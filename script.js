@@ -69,7 +69,7 @@ const typeToCategory = {
   library: "Activity",
 
   // Shopping
-  store: "Shopping", clothing_store: "Shopping", book_store: "Shopping",
+  clothing_store: "Shopping", book_store: "Shopping",
   shoe_store: "Shopping", electronics_store: "Shopping", shopping_mall: "Shopping",
   bicycle_store: "Shopping", jewelry_store: "Shopping", florist: "Shopping", furniture_store: "Shopping",
   hardware_store: "Shopping", pet_store: "Shopping", 
