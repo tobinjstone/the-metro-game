@@ -66,7 +66,7 @@ const typeToCategory = {
   park: "Activity", museum: "Activity", art_gallery: "Activity",
   tourist_attraction: "Activity", landmark: "Activity", movie_theater: "Activity", spa: "Activity",
   stadium: "Activity", zoo: "Activity", bowling_alley: "Activity", 
-  library: "Activity", point_of_interest: "Activity",
+  library: "Activity",
 
   // Shopping
   store: "Shopping", clothing_store: "Shopping", book_store: "Shopping",
