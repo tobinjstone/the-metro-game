@@ -1,10 +1,12 @@
 /* ------------------------------------------------------------------
-   DC Metro lines & stations  – last verified: 10 Jul 2025
+   DC Metro lines & stations  – last verified: 28 Aug 2026
+   Colours are WMATA's official GTFS route colours.
    ------------------------------------------------------------------ */
 export const metroLines = [
   {
     name: "Red",
-    color: "#be1337",
+    color: "#BF0D3E",
+    text: "#ffffff",
     stations: [
       "Shady Grove","Rockville","Twinbrook","North Bethesda",
       "Grosvenor–Strathmore","Medical Center","Bethesda",
@@ -14,11 +16,12 @@ export const metroLines = [
       "Judiciary Square","Union Station","NoMa–Gallaudet U",
       "Rhode Island Ave","Brookland–CUA","Fort Totten",
       "Takoma","Silver Spring","Forest Glen","Wheaton","Glenmont"
-    ]   // :contentReference[oaicite:0]{index=0}
+    ]
   },
   {
     name: "Orange",
-    color: "#da8d35",
+    color: "#ED8B00",
+    text: "#ffffff",
     stations: [
       "Vienna","Dunn Loring","West Falls Church","East Falls Church",
       "Ballston–MU","Virginia Square–GMU","Clarendon","Courthouse",
@@ -27,14 +30,15 @@ export const metroLines = [
       "Federal Center SW","Capitol South","Eastern Market","Potomac Ave",
       "Stadium–Armory","Minnesota Ave","Deanwood","Cheverly",
       "Landover","New Carrollton"
-    ]   // :contentReference[oaicite:1]{index=1}
+    ]
   },
   {
     name: "Silver",
-    color: "#a2a4a1",
+    color: "#919D9D",
+    text: "#ffffff",
     stations: [
-      "Ashburn","Loudoun Gateway","Innovation Center",
-      "Washington Dulles International Airport","Reston Town Center",
+      "Ashburn","Loudoun Gateway","Washington Dulles International Airport",
+      "Innovation Center","Herndon","Reston Town Center",
       "Wiehle–Reston East","Spring Hill","Greensboro","Tysons","McLean",
       "East Falls Church","Ballston–MU","Virginia Square–GMU",
       "Clarendon","Courthouse","Rosslyn","Foggy Bottom–GWU",
@@ -43,11 +47,12 @@ export const metroLines = [
       "Federal Center SW","Capitol South","Eastern Market","Potomac Ave",
       "Stadium–Armory","Benning Road","Capitol Heights",
       "Addison Road–Seat Pleasant","Morgan Boulevard","Downtown Largo"
-    ]   // :contentReference[oaicite:2]{index=2}
+    ]
   },
   {
     name: "Blue",
-    color: "#0072ce",
+    color: "#009CDE",
+    text: "#ffffff",
     stations: [
       "Franconia–Springfield","Van Dorn Street","King Street–Old Town",
       "Braddock Road","Potomac Yard–VT","Ronald Reagan Washington National Airport",
@@ -57,31 +62,41 @@ export const metroLines = [
       "Federal Center SW","Capitol South","Eastern Market","Potomac Ave",
       "Stadium–Armory","Benning Road","Capitol Heights",
       "Addison Road–Seat Pleasant","Morgan Boulevard","Downtown Largo"
-    ]   // :contentReference[oaicite:3]{index=3}
+    ]
   },
   {
+    /* Since May 2023 the Yellow Line runs Huntington ↔ Mount Vernon Square only. */
     name: "Yellow",
-    color: "#ffd100",
+    color: "#FFD100",
+    text: "#1d1d1f",
     stations: [
       "Huntington","Eisenhower Avenue","King Street–Old Town",
       "Braddock Road","Potomac Yard–VT","Ronald Reagan Washington National Airport",
       "Crystal City","Pentagon City","Pentagon","L'Enfant Plaza",
-      "Archives","Gallery Place","Mount Vernon Square",
-      "Shaw–Howard U","U Street","Columbia Heights",
-      "Georgia Ave–Petworth","Fort Totten","West Hyattsville",
-      "Prince George's Plaza","College Park–U of Md","Greenbelt"
-    ]   // :contentReference[oaicite:4]{index=4}
+      "Archives","Gallery Place","Mount Vernon Square"
+    ]
   },
   {
     name: "Green",
-    color: "#00a84f",
+    color: "#00B140",
+    text: "#ffffff",
     stations: [
       "Branch Ave","Suitland","Naylor Road","Southern Ave",
       "Congress Heights","Anacostia","Navy Yard–Ballpark","Waterfront",
       "L'Enfant Plaza","Archives","Gallery Place","Mount Vernon Square",
       "Shaw–Howard U","U Street","Columbia Heights",
       "Georgia Ave–Petworth","Fort Totten","West Hyattsville",
-      "Prince George's Plaza","College Park–U of Md","Greenbelt"
-    ]   // :contentReference[oaicite:5]{index=5}
+      "Hyattsville Crossing","College Park–U of Md","Greenbelt"
+    ]
   }
 ];
+
+/* Short display names for places where the full name is too long */
+export const shortNames = {
+  "Ronald Reagan Washington National Airport": "National Airport",
+  "Washington Dulles International Airport": "Dulles Airport",
+  "Addison Road–Seat Pleasant": "Addison Road",
+  "U Street": "U Street",
+  "Mount Vernon Square": "Mt Vernon Sq"
+};
+export const shortName = s => shortNames[s] ?? s;

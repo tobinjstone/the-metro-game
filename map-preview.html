@@ -1,0 +1,49 @@
+<!doctype html>
+<!--
+  Dev preview for metro-map.js (not linked from the game).
+  Open via a local server, e.g.  python -m http.server 8765  →  http://127.0.0.1:8765/map-preview.html
+    ?labels=0                         hide station names on the full map
+    ?trip=Red|Dupont Circle|Bethesda  play the trip animation as it appears in the game
+    &seek=9                           jump to a point in that animation (seconds)
+-->
+<html lang="en"><head><meta charset="utf-8"><title>Metro map preview</title>
+<style>
+  body{margin:0;background:#fff;font-family:Inter,Arial,sans-serif}
+  svg{display:block}
+  .river{stroke:#D9E9F6}
+  .station{fill:#fff;stroke:#1d1d1f}
+  .lbl{font-size:8px;fill:#333}
+  .map-label{fill:#1d1d1f;font-weight:700}
+  .map-label.mid{font-weight:500;fill:#3a3a3f}
+  #card{width:330px;padding:16px;border:1.5px solid #222;border-radius:16px;margin:20px}
+  #trip{width:298px;height:224px;background:#f6f4ee;border-radius:10px}
+</style></head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<div id="wrap"></div>
+<script type="module">
+  import { renderSystemMap, STATIONS, UNIT, svgEl, animateTrip } from './metro-map.js';
+  const params = new URLSearchParams(location.search);
+  const wrap = document.getElementById('wrap');
+  const trip = params.get('trip');
+  if (trip) {
+    const [line, from, to] = trip.split('|');
+    wrap.innerHTML = '<div id="card"><svg id="trip"></svg></div>';
+    const tl = animateTrip(document.getElementById('trip'), { line, from, to });
+    window.__tl = tl;
+    if (params.get('seek')) { tl.pause(); tl.seek(parseFloat(params.get('seek'))); }
+  } else {
+    wrap.innerHTML = '<svg id="m" width="1500" height="1150"></svg>';
+    const svg = document.getElementById('m');
+    renderSystemMap(svg);
+    if (params.get('labels') !== '0') {
+      const g = svgEl('g', { class:'labels' }, svg);
+      for (const [name, [x, y]] of Object.entries(STATIONS)) {
+        const t = svgEl('text', { x: x*UNIT + 8, y: y*UNIT - 6, class:'lbl' }, g);
+        t.textContent = name;
+      }
+    }
+  }
+  window.__ready = true;
+</script>
+</body></html>
