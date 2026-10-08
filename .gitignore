@@ -1,0 +1,10 @@
+# editor + OS clutter
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+node_modules/
+
+# screenshot walkthrough output (scripts/shoot.mjs)
+shots/
