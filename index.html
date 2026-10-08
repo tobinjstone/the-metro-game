@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Metro Game</title>
-<meta name="description" content="Play The Metro Game: pick a Metro line, ride a random number of stops, and discover a new bar, café, restaurant or park near your mystery station.">
+<meta name="description" content="Play The Metro Game: pick a Metro line, ride a mystery number of stops, and discover a bar, café, restaurant or park near wherever you land.">
 <meta name="theme-color" content="#3B2F2A">
 
-<!-- Open Graph (Facebook, LinkedIn, Discord, etc.) -->
+<!-- Open Graph (Facebook, LinkedIn, Discord, etc.) — scrapers need absolute URLs -->
 <meta property="og:title" content="The Metro Game" />
 <meta property="og:description" content="Board the Unknown. Brave the wilderness of Loudoun Gateway." />
-<meta property="og:image" content="images/the-metro-game-social.png" />
+<meta property="og:image" content="https://themetrogame.com/images/the-metro-game-social.png" />
 <meta property="og:url" content="https://themetrogame.com" />
 <meta property="og:type" content="website" />
 
@@ -18,17 +18,18 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Metro Game">
 <meta name="twitter:description" content="Board the Unknown. Brave the wilderness of Loudoun Gateway.">
-<meta name="twitter:image" content="/images/the-metro-game-social.png">
+<meta name="twitter:image" content="https://themetrogame.com/images/the-metro-game-social.png">
 
-<!-- Icons -->
+<!-- Icons + install -->
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+<link rel="manifest" href="manifest.webmanifest">
 
 <!-- Fonts + styles -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@800&family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="style.css" />
 <!-- Metro 50 is the house look; ?theme=classic brings back the map-paper version -->
 <script>
@@ -40,28 +41,50 @@
 <body>
   <!-- Small logo that pins to the top once the game starts -->
   <header id="site-header">
-    <button id="home-btn" class="header-logo" type="button" aria-label="Start over">
+    <button id="home-btn" class="header-logo" type="button" aria-label="Home">
       <span class="logo-mask" role="img" aria-label="The Metro Game"></span>
     </button>
+    <nav id="progress" class="progress" aria-label="Trip progress">
+      <ol>
+        <li>Start</li><li>Mood</li><li>Board</li><li>Ride</li><li>Arrive</li>
+      </ol>
+    </nav>
   </header>
 
   <main id="stage">
 
     <!-- INTRO ------------------------------------------------------------>
-    <section id="intro-screen" class="screen active">
+    <section id="intro-screen" class="screen active" aria-label="The Metro Game">
       <svg id="intro-map" aria-hidden="true"></svg>
       <div class="intro-content">
+        <h1 class="visually-hidden">The Metro Game</h1>
         <span id="logo" class="logo-mask" role="img" aria-label="The Metro Game"></span>
-                <div class="line-strip" aria-hidden="true">
+        <div class="line-strip" aria-hidden="true">
           <i class="Red"></i><i class="Orange"></i><i class="Silver"></i><i class="Blue"></i><i class="Yellow"></i><i class="Green"></i>
         </div>
-        <button id="start-btn" class="btn btn-primary btn-lg" type="button" disabled>
-          <span class="btn-label">Loading stations…</span>
+        <p class="tagline">Pick a line. Ride a mystery number of stops. Find something good wherever you land.</p>
+        <ol class="how-steps">
+          <li><span>1</span>Choose where you start</li>
+          <li><span>2</span>Ride the mystery stops</li>
+          <li><span>3</span>Explore what’s there</li>
+        </ol>
+
+        <div id="resume-card" class="resume-card" hidden>
+          <p class="resume-eyebrow">You’re mid-ride</p>
+          <p id="resume-text" class="resume-text"></p>
+          <div class="resume-actions">
+            <button id="resume-btn" class="btn btn-primary" type="button">Pick up where I left off</button>
+            <button id="discard-btn" class="text-link" type="button">Start fresh</button>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary btn-lg" type="button">
+          <span class="btn-label">Board the Unknown</span>
         </button>
-        <p id="load-error" class="load-error" hidden>
-          Couldn’t load the places list.
-          <button id="retry-btn" class="text-link" type="button">Try again</button>
-        </p>
+        <div class="intro-links">
+          <button id="daily-btn" class="text-link" type="button"></button>
+          <button id="passport-link" class="text-link" type="button" hidden></button>
+        </div>
       </div>
     </section>
 
@@ -71,37 +94,53 @@
     <!-- PICK STATION ----------------------------------------------------->
     <section id="station-screen" class="screen" hidden></section>
 
-    <!-- CATEGORY FILTER -------------------------------------------------->
-    <section id="category-screen" class="screen" hidden>
+    <!-- MOOD + HOW FAR --------------------------------------------------->
+    <section id="mood-screen" class="screen" hidden>
       <div class="screen-body">
-        <h2 class="screen-title">What are you in the mood for?</h2>
-        <p class="subtitle">We’ll find one near your mystery stop.</p>
+        <p id="mood-origin" class="origin-chip"></p>
+        <h2 class="screen-title" tabindex="-1">What are you in the mood for?</h2>
 
-        <div id="category-grid" class="category-grid">
-          <button class="cat-btn" data-cat="Coffee" type="button"><img src="images/coffee.svg" alt=""><span>Coffee</span></button>
-          <button class="cat-btn" data-cat="Drinks" type="button"><img src="images/drinks.svg" alt=""><span>Drinks</span></button>
-          <button class="cat-btn" data-cat="Food" type="button"><img src="images/food.svg" alt=""><span>Food</span></button>
-          <button class="cat-btn" data-cat="Activity" type="button"><img src="images/activity.svg" alt=""><span>Activity</span></button>
-          <button class="cat-btn" data-cat="Shopping" type="button"><img src="images/shopping.svg" alt=""><span>Shopping</span></button>
-          <button class="cat-btn" data-cat="Surprise" type="button"><img src="images/random.svg" alt=""><span>Surprise me</span></button>
+        <div id="category-grid" class="category-grid" role="group" aria-label="Mood">
+          <button class="cat-btn" data-cat="Coffee" type="button" aria-pressed="false"><img src="images/coffee.svg" alt=""><span>Coffee</span></button>
+          <button class="cat-btn" data-cat="Drinks" type="button" aria-pressed="false"><img src="images/drinks.svg" alt=""><span>Drinks</span></button>
+          <button class="cat-btn" data-cat="Food" type="button" aria-pressed="false"><img src="images/food.svg" alt=""><span>Food</span></button>
+          <button class="cat-btn" data-cat="Activity" type="button" aria-pressed="false"><img src="images/activity.svg" alt=""><span>Activity</span></button>
+          <button class="cat-btn" data-cat="Shopping" type="button" aria-pressed="false"><img src="images/shopping.svg" alt=""><span>Shopping</span></button>
+          <button class="cat-btn" data-cat="Surprise" type="button" aria-pressed="false"><img src="images/random.svg" alt=""><span>Surprise me</span></button>
         </div>
 
-        <button id="cat-back-btn" class="text-link back-link" type="button">← Back</button>
+        <p class="field-label" id="distance-label">How far?</p>
+        <div id="distance-picker" class="segmented" role="group" aria-labelledby="distance-label">
+          <button type="button" data-distance="quick" aria-pressed="false"><b>Quick hop</b><small>1–4 stops</small></button>
+          <button type="button" data-distance="wander" aria-pressed="false"><b>Wander</b><small>5–9 stops</small></button>
+          <button type="button" data-distance="long" aria-pressed="false"><b>Long haul</b><small>10+ stops</small></button>
+        </div>
+
+        <button id="mystery-toggle" class="switch-row" type="button" role="switch" aria-checked="true">
+          <span class="switch-text"><b>Mystery mode</b><small id="mystery-sub">Your stop stays secret until you arrive</small></span>
+          <span class="switch" aria-hidden="true"><i></i></span>
+        </button>
+
+        <p id="mood-promise" class="promise"></p>
+        <button id="go-btn" class="btn btn-primary btn-wide" type="button" disabled>Find my train</button>
+        <p id="mood-error" class="load-error" hidden>Couldn’t load the places list. <button id="retry-btn" class="text-link" type="button">Try again</button></p>
+        <button id="mood-back-btn" class="text-link back-link" type="button">← Back</button>
       </div>
     </section>
 
-    <!-- MYSTERY TRIP ----------------------------------------------------->
+    <!-- MYSTERY TRIP (the ticket) ---------------------------------------->
     <section id="trip-screen" class="screen" hidden>
       <div class="screen-body">
 
-        <!-- "thinking" loader -->
-        <div id="thinking-box" class="thinking" hidden>
-          <div class="signal" aria-hidden="true"><i></i><i></i><i></i></div>
-          <p id="thinking-text">Finding your train…</p>
-        </div>
+        <!-- Departure board (WMATA-style PIDS) -->
+        <section id="pids" class="pids" aria-label="Departure board" hidden>
+          <div class="pids-row pids-head" aria-hidden="true"><span>LN</span><span>CAR</span><span>DEST</span><span>MIN</span></div>
+          <div id="pids-rows"></div>
+          <p id="pids-ticker" class="pids-ticker" aria-live="polite"></p>
+        </section>
 
         <!-- Ticket -->
-        <article id="result-card" class="ticket" hidden>
+        <article id="result-card" class="ticket" hidden aria-label="Your ticket">
           <header class="ticket-head">
             <span id="ticket-line" class="line-pill"></span>
             <span id="ticket-dir" class="ticket-dir"></span>
@@ -117,47 +156,138 @@
 
           <div class="map-frame">
             <svg id="trip-map" role="img" aria-label="Map of your Metro trip"></svg>
+            <button id="skip-hint" class="skip-hint" type="button">Skip ›</button>
           </div>
 
           <p id="arrival-text" class="arrival-text" aria-live="polite"></p>
+          <div id="shortlist" class="shortlist" hidden></div>
+          <p id="trip-note" class="trip-note" hidden></p>
+
+          <div id="peek-row" class="peek-row" hidden>
+            <span class="peek-label"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Mystery mode</span>
+            <button id="peek-btn" class="chip-btn" type="button" aria-pressed="false">Peek at my stop</button>
+          </div>
         </article>
 
         <div class="trip-buttons" hidden>
-          <button id="arrived-btn" class="btn btn-primary" type="button">I’ve arrived</button>
+          <button id="board-btn" class="btn btn-primary" type="button">I’m on the train</button>
           <button id="play-again" class="btn btn-secondary" type="button">Start over</button>
         </div>
+      </div>
+    </section>
+
+    <!-- RIDE MODE -------------------------------------------------------->
+    <section id="ride-screen" class="screen" hidden>
+      <div class="screen-body ride-body">
+        <div class="ride-count" aria-live="polite">
+          <span id="ride-number" class="ride-number"></span>
+          <h2 id="ride-title" class="ride-title" tabindex="-1"></h2>
+          <p id="ride-sub" class="ride-sub"></p>
+        </div>
+
+        <ol id="ride-strip" class="ride-strip" aria-label="Stops on your ride"></ol>
+
+        <div id="ride-actions" class="ride-actions">
+          <button id="doors-btn" class="btn btn-primary btn-wide" type="button">Doors opened</button>
+          <p class="ride-hint">Tap each time the doors open.<span class="undo-wrap"> Miscounted? <button class="text-link inline undo-btn" type="button">Undo</button></span></p>
+        </div>
+        <div id="ride-done" class="ride-actions" hidden>
+          <button id="arrived-btn" class="btn btn-primary btn-wide" type="button">I’ve arrived →</button>
+          <p class="ride-hint">Not there yet? <button class="text-link inline undo-btn" type="button">Undo</button></p>
+        </div>
+        <button id="ride-quit" class="text-link back-link" type="button">Abandon this ride</button>
+      </div>
+      <div id="platform-edge" class="platform-edge" aria-hidden="true"></div>
+    </section>
+
+    <!-- ARRIVAL ---------------------------------------------------------->
+    <section id="arrival-screen" class="screen" hidden>
+      <div class="screen-body arrival-body">
+        <div class="pylon-scene" aria-hidden="true">
+          <div class="pylon"><span class="pylon-m">M</span><span id="pylon-stripes" class="pylon-stripes"></span></div>
+        </div>
+        <div class="station-sign">
+          <h2 id="sign-name" class="sign-name" tabindex="-1"></h2>
+          <span id="sign-bullets" class="sign-bullets"></span>
+          <span id="sign-stripe" class="sign-stripe"></span>
+        </div>
+        <div id="stamp" class="stamp" aria-hidden="true"></div>
+
+        <h3 class="arrival-title">You made it.</h3>
+        <p id="arrival-sub" class="arrival-sub"></p>
+        <p id="stamp-note" class="stamp-note"></p>
+
+        <button id="venue-btn" class="btn btn-primary btn-wide" type="button">Show me where to go →</button>
       </div>
     </section>
 
     <!-- VENUE RESULT ----------------------------------------------------->
     <section id="venue-screen" class="screen" hidden>
       <div class="screen-body">
-        <article id="venue-card" class="venue-card">
+        <p id="venue-station" class="origin-chip"></p>
+        <article id="venue-card" class="venue-card" aria-live="polite">
           <p id="venue-message" class="vline eyebrow">You’re going to…</p>
-          <h2 id="venue-name" class="vline venue-name"></h2>
+          <h2 id="venue-name" class="vline venue-name" tabindex="-1"></h2>
           <div id="venue-meta" class="vline venue-meta"></div>
           <p id="venue-address" class="vline venue-address"></p>
           <p id="venue-note" class="vline venue-note"></p>
 
           <div class="venue-actions">
-            <a id="venue-maps" class="btn btn-primary" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a id="venue-maps" class="btn btn-primary" target="_blank" rel="noopener">Walk there</a>
             <button id="new-place-btn" class="btn btn-secondary" type="button">Find a new place</button>
+            <p id="venue-count" class="venue-count"></p>
           </div>
         </article>
 
-        <button id="start-over-btn" class="text-link back-link" type="button">Start over</button>
+        <section id="roster" class="roster" hidden>
+          <div class="roster-head"><h3 id="roster-title"></h3><span id="roster-total"></span></div>
+          <div id="roster-grid" class="roster-grid" role="group" aria-label="Switch mood"></div>
+          <p class="roster-hint">Tap a category to switch your mood without leaving the station.</p>
+        </section>
+
+        <div class="venue-footer">
+          <button id="share-btn" class="btn btn-ghost" type="button">Share my ride</button>
+          <button id="start-over-btn" class="btn btn-ghost" type="button">New trip</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSPORT --------------------------------------------------------->
+    <section id="passport-screen" class="screen" hidden>
+      <div class="screen-body">
+        <h2 class="screen-title" tabindex="-1">Your passport</h2>
+        <p id="passport-count" class="subtitle"></p>
+        <figure class="passport-map"><svg id="passport-map" role="img" aria-label="System map with the stations you’ve visited in gold"></svg></figure>
+        <div id="passport-lines" class="passport-lines"></div>
+        <ol id="passport-trips" class="passport-trips"></ol>
+        <div class="venue-footer">
+          <button id="passport-share" class="btn btn-ghost" type="button">Share passport</button>
+          <button id="passport-new" class="btn btn-primary" type="button">New trip</button>
+        </div>
       </div>
     </section>
 
   </main>
 
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
   <footer class="game-footer">
-    <p>Created by <a href="https://x.com/tobinjstone" target="_blank" rel="noopener">Tobin Stone</a> &copy; 2025</p>
-    <p>Powered by Google &amp; the WMATA API · Not affiliated with WMATA</p>
+    <p>Created by <a href="https://x.com/tobinjstone" target="_blank" rel="noopener">Tobin Stone</a> &copy; <span id="year">2026</span></p>
+    <p>Places data from Google · Not affiliated with WMATA</p>
   </footer>
 
   <!-- GSAP (global) then the app (ES module) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script type="module" src="script.js"></script>
+  <!-- If a file didn't arrive (spotty signal on a platform), say so instead of sitting there dead -->
+  <script>
+    setTimeout(function () {
+      if (window.__metroBooted) return;
+      var p = document.createElement('p');
+      p.className = 'boot-error';
+      p.innerHTML = 'The game didn’t finish loading. <button type="button" onclick="location.reload()">Try again</button>';
+      document.querySelector('.intro-content').appendChild(p);
+    }, 8000);
+  </script>
 </body>
 </html>

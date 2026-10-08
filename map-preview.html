@@ -5,33 +5,78 @@
     ?labels=0                         hide station names on the full map
     ?trip=Red|Dupont Circle|Bethesda  play the trip animation as it appears in the game
     &seek=9                           jump to a point in that animation (seconds)
+    &mystery=Glenmont                 mystery mode (shortlist from the trip's distance band)
+    &w=326                            card width in px (the map is 4:3)
+    ?sheet=1                          contact sheet: a dozen trips, all finished
+    &sheet=1&seek=2.6                 …or all frozen at the same moment
 -->
 <html lang="en"><head><meta charset="utf-8"><title>Metro map preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-  body{margin:0;background:#fff;font-family:Inter,Arial,sans-serif}
+  :root { --font: Inter, Arial, sans-serif; --ink: #2A1F1B; --ink-2: #5C4943; --map-paper: #FDF7F1; }
+  body{margin:0;background:#fff;font-family:var(--font)}
   svg{display:block}
-  .river{stroke:#D9E9F6}
-  .station{fill:#fff;stroke:#1d1d1f}
+  .river{fill:#D6E8F5}
+  .line-casing{stroke:var(--map-paper)}
+  .station .st-outer{fill:var(--ink);stroke:var(--ink)}
+  .station .st-inner{fill:#fff;stroke:#fff}
   .lbl{font-size:8px;fill:#333}
-  .map-label{fill:#1d1d1f;font-weight:700}
-  .map-label.mid{font-weight:500;fill:#3a3a3f}
-  #card{width:330px;padding:16px;border:1.5px solid #222;border-radius:16px;margin:20px}
-  #trip{width:298px;height:224px;background:#f6f4ee;border-radius:10px}
+  .map-label{font-family:var(--font);fill:var(--ink);font-weight:700;stroke:var(--map-paper)}
+  .map-label.mid{font-weight:500;fill:var(--ink-2)}
+  .map-label.toward{font-weight:600;fill:var(--ink-2)}
+  .card{padding:12px;border:1.5px solid #222;border-radius:16px;margin:10px;display:inline-block;vertical-align:top}
+  .card svg{background:var(--map-paper);border-radius:10px;aspect-ratio:4/3}
+  .card p{margin:6px 2px 0;font:600 12px var(--font);color:#555;max-width:var(--w)}
+  #sheet{display:flex;flex-wrap:wrap;padding:6px}
 </style></head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <div id="wrap"></div>
 <script type="module">
   import { renderSystemMap, STATIONS, UNIT, svgEl, animateTrip } from './metro-map.js';
+  import { shortName } from './metro-lines.js';
+  import { shortlist } from './trip.js';
+  gsap.ticker.lagSmoothing(0);
   const params = new URLSearchParams(location.search);
   const wrap = document.getElementById('wrap');
-  const trip = params.get('trip');
-  if (trip) {
-    const [line, from, to] = trip.split('|');
-    wrap.innerHTML = '<div id="card"><svg id="trip"></svg></div>';
-    const tl = animateTrip(document.getElementById('trip'), { line, from, to });
-    window.__tl = tl;
-    if (params.get('seek')) { tl.pause(); tl.seek(parseFloat(params.get('seek'))); }
+  const W = +(params.get('w') ?? 326);
+  const seek = params.get('seek');
+
+  const card = (line, from, to, mystery, caption) => {
+    const c = document.createElement('div'); c.className = 'card'; c.style.setProperty('--w', `${W}px`);
+    c.innerHTML = `<svg style="width:${W}px;height:${W * 0.75}px"></svg><p>${caption ?? ''}</p>`;
+    (document.getElementById('sheet') ?? wrap).appendChild(c);
+    const tl = animateTrip(c.querySelector('svg'), { line, from, to, labelFor: shortName, mystery: !!mystery, toward: mystery || undefined,
+                                                    candidates: mystery ? shortlist(line, from, to) : undefined });
+    tl.pause(); tl.progress(seek == null ? 1 : Math.min(1, +seek / tl.duration()));
+    return tl;
+  };
+
+  if (params.get('frames')) {                                  // one trip frozen at 8 moments
+    wrap.innerHTML = '<div id="sheet"></div>';
+    const [l, a, b, m] = params.get('frames').split('|');
+    const probe = card(l, a, b, m, ''); const total = probe.duration(); probe.kill();
+    document.querySelector('#sheet').innerHTML = '';
+    for (let i = 0; i < 8; i++) {
+      const at = total * i / 7;
+      const tl = card(l, a, b, m, `t = ${at.toFixed(2)}s of ${total.toFixed(2)}s`);
+      tl.progress(at / total);
+    }
+  } else if (params.get('sheet')) {
+    wrap.innerHTML = '<div id="sheet"></div>';
+    const TRIPS = [
+      ['Red', 'Gallery Place', 'Takoma'], ['Red', 'Dupont Circle', 'Bethesda'], ['Red', 'Metro Center', 'Union Station'],
+      ['Orange', 'Rosslyn', 'Eastern Market'], ['Silver', 'Tysons', 'Ballston–MU'], ['Blue', 'Pentagon', 'Foggy Bottom–GWU'],
+      ['Yellow', 'Huntington', "L'Enfant Plaza"], ['Green', 'Navy Yard–Ballpark', 'Columbia Heights'], ['Orange', 'Stadium–Armory', 'New Carrollton'],
+      ['Blue', 'King Street–Old Town', 'Franconia–Springfield'], ['Silver', 'Ashburn', 'Reston Town Center'], ['Green', 'Fort Totten', 'Greenbelt'],
+      ['Red', 'Shady Grove', 'Glenmont'], ['Yellow', 'Pentagon', 'Mount Vernon Square'], ['Blue', 'Rosslyn', 'Downtown Largo'],
+      ['Red', 'Gallery Place', 'Takoma', 'Glenmont'], ['Orange', 'Clarendon', 'Smithsonian', 'New Carrollton'], ['Green', 'Anacostia', 'Archives', 'Greenbelt']
+    ];
+    for (const [l, a, b, m] of TRIPS) card(l, a, b, m, `${l}: ${shortName(a)} → ${m ? `? (toward ${shortName(m)})` : shortName(b)}`);
+  } else if (params.get('trip')) {
+    const [line, from, to] = params.get('trip').split('|');
+    window.__tl = card(line, from, to, params.get('mystery'));
+    if (seek == null) { window.__tl.progress(0); window.__tl.play(); }
   } else {
     wrap.innerHTML = '<svg id="m" width="1500" height="1150"></svg>';
     const svg = document.getElementById('m');

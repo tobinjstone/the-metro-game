@@ -1,10 +1,11 @@
 /* ------------------------------------------------------------------
    DC Metro lines & stations  – last verified: 28 Aug 2026
-   Colours are WMATA's official GTFS route colours.
+   Colours are WMATA's official GTFS route colours. `text` is the label colour
+   on that colour: white only clears 4.5:1 contrast on Red, so the rest use ink.
    ------------------------------------------------------------------ */
 export const metroLines = [
   {
-    name: "Red",
+    name: "Red", code: "RD",
     color: "#BF0D3E",
     text: "#ffffff",
     stations: [
@@ -19,9 +20,9 @@ export const metroLines = [
     ]
   },
   {
-    name: "Orange",
+    name: "Orange", code: "OR",
     color: "#ED8B00",
-    text: "#ffffff",
+    text: "#1d1d1f",
     stations: [
       "Vienna","Dunn Loring","West Falls Church","East Falls Church",
       "Ballston–MU","Virginia Square–GMU","Clarendon","Courthouse",
@@ -33,9 +34,9 @@ export const metroLines = [
     ]
   },
   {
-    name: "Silver",
+    name: "Silver", code: "SV",
     color: "#919D9D",
-    text: "#ffffff",
+    text: "#1d1d1f",
     stations: [
       "Ashburn","Loudoun Gateway","Washington Dulles International Airport",
       "Innovation Center","Herndon","Reston Town Center",
@@ -50,9 +51,9 @@ export const metroLines = [
     ]
   },
   {
-    name: "Blue",
+    name: "Blue", code: "BL",
     color: "#009CDE",
-    text: "#ffffff",
+    text: "#1d1d1f",
     stations: [
       "Franconia–Springfield","Van Dorn Street","King Street–Old Town",
       "Braddock Road","Potomac Yard–VT","Ronald Reagan Washington National Airport",
@@ -66,7 +67,7 @@ export const metroLines = [
   },
   {
     /* Since May 2023 the Yellow Line runs Huntington ↔ Mount Vernon Square only. */
-    name: "Yellow",
+    name: "Yellow", code: "YL",
     color: "#FFD100",
     text: "#1d1d1f",
     stations: [
@@ -77,9 +78,9 @@ export const metroLines = [
     ]
   },
   {
-    name: "Green",
+    name: "Green", code: "GR",
     color: "#00B140",
-    text: "#ffffff",
+    text: "#1d1d1f",
     stations: [
       "Branch Ave","Suitland","Naylor Road","Southern Ave",
       "Congress Heights","Anacostia","Navy Yard–Ballpark","Waterfront",

@@ -1,0 +1,14 @@
+{
+  "name": "The Metro Game",
+  "short_name": "Metro Game",
+  "description": "Pick a line, ride a mystery number of stops, find something good wherever you land.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#3B2F2A",
+  "theme_color": "#3B2F2A",
+  "icons": [
+    { "src": "images/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

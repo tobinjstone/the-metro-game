@@ -1,6 +1,6 @@
 
 {
-    "Stations"; [{
+    "Stations": [{
         "Code": "A01",
         "Name": "Metro Center",
         "StationTogether1": "C01",
